@@ -9,22 +9,21 @@
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
-	<c:if test="${not empty sessionScope.id}">
-    	<c:set var="nextURL" value="MainPage.jsp?id=${sessionScope.id}" />
-  	  	<c:redirect url="${nextURL}" />
-	</c:if>
-	
-	    <header>
+    <header>
         <div id="menuContainer" class="container">
-            <form id="loginForm" method="post" action="./LoginPage.jsp">
-                <input id="loginbutton" class="headerMenus" type="submit" value="로그인">
-            </form>
+	        <form class="topMenuForm" method="post" action="./SessionServlet">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="마이페이지">
+			</form>
+	        <form class="topMenuForm" method="post" action="./SessionServlet">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="로그아웃">
+			</form>
         </div>
     </header>
     <div id="v">
         <div class="container">
-            <h1 id="mainTitle">도서 관리 시스템</h1>
+            <h1 id="mainTitle">로그인 성공 임시 페이지</h1>
         </div>
     </div>
     <hr>
@@ -36,12 +35,12 @@
                 </form>
             </div>
             <div>
-                <form method="post" action="./LoginPage.jsp">
+                <form method="post" action="">
                     <input class="mainMenu" type="submit" value="도서대여">
                 </form>
             </div>
             <div>
-                <form method="post" action="./LoginPage.jsp">
+                <form method="post" action="">
                     <input class="mainMenu" type="submit" value="도서반납">
                 </form>
             </div>
