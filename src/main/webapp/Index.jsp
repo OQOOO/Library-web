@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>Library</title>
 <link rel="stylesheet" href="css/main.css">
+
 </head>
 <body>
 
@@ -16,6 +16,7 @@
 	</c:if>
 	
 	    <header>
+	    
         <div id="menuContainer" class="container">
             <form id="loginForm" method="post" action="./LoginPage.jsp">
                 <input id="loginbutton" class="headerMenus" type="submit" value="로그인">
@@ -31,7 +32,7 @@
     <div id="main">
         <div class="container" id="mainMenuCon">
             <div>
-                <form method="post" action="">
+                <form method="post" action="./BookSearch.jsp">
                     <input class="mainMenu" type="submit" value="도서검색">
                 </form>
             </div>

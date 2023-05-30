@@ -66,19 +66,23 @@
 	<form method="post" action ="./LoginProcess">
 		<div class="inputBox">
 			<p class="idpw">아이디</p>
-			<input class="ipt" type="text" id='id' name = "id"><br>
+			<input class="ipt" type="text" pattern="[A-Za-z0-9]+" title="아이디는 영어와 숫자만 사용할 수 있습니다." id='id' name = "id" value=${param.bId }><br>
 			<c:if test="${param.id == 'false'}">
-				${"<p id='errer'>아이디 오류</p>"}
+				${"<p id='errer'>아이디를 입력하세요</p>"}
 			</c:if>
 		</div>
 		<div class="inputBox">
 			<p class="idpw">비밀번호</p>
 			<input class="ipt" type="password" id='pw' name = "pw"><br>
 			<c:if test="${param.pw == 'false'}">
-				${ "<p id='errer'>비밀번호 오류</p>" }
+				${ "<p id='errer'>비밀번호를 입력하세요</p>" }
+			</c:if>
+			<c:if test="${param.login == 'false'}">
+				${ "<p id='errer'>해당 계정이 존재하지 않습니다.</p>" }
 			</c:if><br>
 		</div>
 		<input id="logInButton" type="submit" value="로그인">
+		<!-- 뒤로 -->
 	</form>
 	</div>
 </body>

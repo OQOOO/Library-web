@@ -16,7 +16,7 @@
 				<input class="headerMenus" type="submit" value="마이페이지">
 			</form>
 	        <form class="topMenuForm" method="post" action="./SessionServlet">
-				<input type="text" name="logout" value="1" style="display: none;">
+				<input type="text" name="logout" value="logout" style="display: none;">
 				<input class="headerMenus" type="submit" value="로그아웃">
 			</form>
         </div>
@@ -30,7 +30,7 @@
     <div id="main">
         <div class="container" id="mainMenuCon">
             <div>
-                <form method="post" action="">
+                <form method="post" action="./BookSearch.jsp">
                     <input class="mainMenu" type="submit" value="도서검색">
                 </form>
             </div>
