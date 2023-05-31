@@ -63,7 +63,7 @@
   	  	<c:redirect url="${nextURL}" />
 	</c:if>
 	
-	<form method="post" action ="./LoginProcess">
+	<form method="post" action ="Login.do">
 		<div class="inputBox">
 			<p class="idpw">아이디</p>
 			<input class="ipt" type="text" pattern="[A-Za-z0-9]+" title="아이디는 영어와 숫자만 사용할 수 있습니다." id='id' name = "id" value=${param.bId }><br>
@@ -84,6 +84,9 @@
 		<input id="logInButton" type="submit" value="로그인">
 		<!-- 뒤로 -->
 	</form>
+	<form method="post" action ="./Index.jsp">
+	<input type="submit" value="뒤로">
+</form>
 	</div>
 </body>
 </html>

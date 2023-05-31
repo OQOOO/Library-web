@@ -10,12 +10,13 @@
 </head>
 <body>
     <header>
+    
         <div id="menuContainer" class="container">
-	        <form class="topMenuForm" method="post" action="./SessionServlet">
+	        <form class="topMenuForm" method="post" action="./MyPage.jsp">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
 			</form>
-	        <form class="topMenuForm" method="post" action="./SessionServlet">
+	        <form class="topMenuForm" method="post" action="Logout.do">
 				<input type="text" name="logout" value="logout" style="display: none;">
 				<input class="headerMenus" type="submit" value="로그아웃">
 			</form>

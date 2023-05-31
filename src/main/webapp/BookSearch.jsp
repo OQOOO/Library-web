@@ -18,8 +18,11 @@
 </style>
 </head>
 <body>
+<form method="post" action ="./Index.jsp">
+	<input type="submit" value="뒤로">
+</form>
 책검색
-<form method="post" action ="./BookSearchServlet">
+<form method="post" action ="BookSearch.do">
 	제목<input type="text" name="title"><br>
 	작가<input type="text" name="writer"><br>
 	출판<input type="text" name="publisher"><br>
