@@ -9,14 +9,14 @@ import kr.ac.kopo.controller.Controller;
 import kr.ac.kopo.dao.UserDAO;
 import kr.ac.kopo.vo.UserVO;
 
-public class SingupController implements Controller{
+public class UserDataUpdateController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		UserDAO dao = new UserDAO();
 		UserVO vo = new UserVO();
 		
 		// ============ 입력구간 ============ //
-		// 아이디
+		// 아이디(고정)
 		String id = request.getParameter("id");
 		
 		// 비밀번호
@@ -39,20 +39,7 @@ public class SingupController implements Controller{
 		
 		// ============ 처리구간 ============ //
 		int success = 0;
-		// 아이디
-		boolean isIdInput = !id.equals("") ? true : false;
-		boolean isIdNotDuplicate = dao.idChack(id);
-		
-		if (isIdInput && isIdNotDuplicate) {
-			request.setAttribute("id", id);
-			success++;
-		} else {
-			if (isIdInput == false) {
-				request.setAttribute("idErrer", "아이디를 입력해주세요");
-			} else if (isIdNotDuplicate == false) {
-				request.setAttribute("idErrer", "중복된 아이디입니다.");
-			}
-		}
+
 		
 		// 비밀번호
 		boolean isPasswordMatch = (pw.equals(pwCheck)) ? true : false;
@@ -117,20 +104,18 @@ public class SingupController implements Controller{
 		}
 		
 		// 로그인 결과
-		if (success == 6) {
-			System.out.println("회원가입 성공");
+		if (success == 5) {
+			System.out.println("유저 정보 변경 성공");
 			vo.setId(id);
 			vo.setPassword(pw);
 			vo.setName(name);
 			vo.setBirthDate(birthDate);
 			vo.setEmail(email);
 			vo.setPhoneNum(pFront+pMiddle+pBack);
-			dao.userDataInsert(vo);
-			request.setAttribute("SingupSuccess", true);
-			return "./Index.jsp";
-		} else {
-			return "./SingupPage.jsp";
+			dao.userDataUpdate(vo);
+			request.setAttribute("userDataUpdateSuccess", true);
 		}
+		return "UserInfo.do?re=infoPage";
 		
 		
 	}

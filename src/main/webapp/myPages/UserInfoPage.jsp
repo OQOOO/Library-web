@@ -6,6 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+
 </head>
 <body>
 <h1>유저 정보 페이지</h1>
@@ -18,6 +19,13 @@
 전화번호 : ${vo.phoneNum }<br>
 <form class="topMenuForm" method="post" action="../MyPage.jsp">
 	<input type="submit" value="뒤로">
+</form>
+
+<c:set var="re" value="infoPage"/>
+<form class="topMenuForm" method="post" action="UserInfo.do?re=infoPage">
+	<input type="hidden" name="key" value="${re}" />
+
+	<input type="submit" value="내정보 수정">
 </form>
 </body>
 </html>

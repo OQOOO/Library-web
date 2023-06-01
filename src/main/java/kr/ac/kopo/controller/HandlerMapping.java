@@ -20,6 +20,8 @@ public class HandlerMapping {
 		mappings.put("/PasswordCheck.do", new PasswordCheckController());
 		mappings.put("/ViewUserInfo.do", new UserInfoController());
 		mappings.put("/Singup.do", new SingupController());
+		mappings.put("/UserInfo.do", new UserInfoController());
+		mappings.put("/UserDateUpdate.do", new UserDataUpdateController());
 	}
 	
 	public Controller getController(String path) {

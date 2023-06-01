@@ -25,13 +25,7 @@ public class PasswordCheckController implements Controller {
 		obj = dao.userLogIn(vo);
 		
 		if(obj != null) {
-			UserDAO dao1 = new UserDAO();
-			UserVO vo1 = new UserVO();
-			
-			vo1 = dao1.getUserData(id);
-			request.setAttribute("userInfo", vo1);
-			
-			return "UserInfoPage.jsp";
+			return "UserInfo.do?re=pwCheck";
 		} else {
 			return "InputPasswordPage.jsp";
 		}

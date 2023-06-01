@@ -21,14 +21,15 @@ public class LibraryBooksDAO {
 		String writer = vo.getWriter();
 		String publisher = vo.getPublisher();
 		
-		// 
+		// 신비하고 기묘한 로직
 		String orAnd1 = (bookName == "" || writer == "") ? "OR" : "AND";
 		String orAnd2 = (writer == "" || publisher == "") ? "OR" : "AND";
+		orAnd1 = bookName != "" && publisher != "" ? "AND" : "OR";
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT * ");
-		sql.append("FROM LIBRARY_BOOKS "); // �뼇履� 媛� 以� �븯�굹媛� NULL�씠硫� OR �븘�땲硫� AND
-		sql.append("WHERE BOOK_NAME = ? " + orAnd1 + " WRITER = ? " + orAnd2 + " PUBLISHER = ? ");
+		sql.append("FROM LIBRARY_BOOKS "); // 
+		sql.append("WHERE BOOK_NAME = ? " + orAnd1 + " (WRITER = ? " + orAnd2 + " PUBLISHER = ? )");
 		
 		try (
 			Connection conn = new ConnectionFactory().getConnection();

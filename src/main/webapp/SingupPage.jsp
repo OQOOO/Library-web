@@ -57,6 +57,9 @@
 		<p class="errerMessage">${requestScope.phoneNumErrer}</p> <br>
 		
 		<input type="submit" value="회원가입">
+		</form>
+		<form method="post" action ="./Index.jsp">
+		<input type="submit" value="뒤로">
 	</form>
 </body>
 </html>

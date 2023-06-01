@@ -20,6 +20,15 @@ public class UserInfoController implements Controller {
 		vo = dao.getUserData(id);
 		request.setAttribute("userInfo", vo);
 		
-		return "UserInfoPage.jsp";
+		String re = (String)request.getParameter("re");
+		
+		switch (re) {
+		case "pwCheck":
+			return "UserInfoPage.jsp";
+		case "infoPage":
+			return "UserDataUpdate.jsp";
+		default:
+			return "UserInfoPage.jsp";
+		}
 	}
 }

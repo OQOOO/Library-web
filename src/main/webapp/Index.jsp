@@ -94,6 +94,16 @@ header {
     background-color: aliceblue;
 }
 </style>
+<script>
+    // 페이지가 로드될 때 실행될 함수
+    window.onload = function() {
+        
+    let s = ${requestScope.SingupSuccess};
+	    if(s === true) {
+	    	alert("회원가입에 성공했습니다!");
+	    }
+    };
+</script>
 </head>
 <body>
 

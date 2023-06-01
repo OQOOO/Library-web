@@ -13,7 +13,6 @@ import kr.ac.kopo.vo.BookVO;
 public class BookSearchController implements Controller{
  @Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("BookSearchBean 작동성공");
 	 
 	 // 데이터 받아오기
 	 	String title = request.getParameter("title");
@@ -39,7 +38,6 @@ public class BookSearchController implements Controller{
 		}
 		
 		List<BookVO> bookList = dao.searchBooks(vo);
-		System.out.println("bookSearchServlet에서 출력됨 : " + bookList);
 		
 		// 결과 저장
 		request.setAttribute("booksInfo", bookList);
