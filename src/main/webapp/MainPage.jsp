@@ -24,7 +24,7 @@
     </header>
     <div id="v">
         <div class="container">
-            <h1 id="mainTitle">로그인 성공 임시 페이지</h1>
+            <h1 id="mainTitle">로그인 성공 페이지</h1>
         </div>
     </div>
     <hr>

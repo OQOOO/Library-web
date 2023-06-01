@@ -5,7 +5,7 @@ public class UserVO {
 	private String id;
 	private String password;
 	private String name;
-	private int birthDate;
+	private String birthDate; //원래 int타입이였으나 수정함. 심각한 오류가 발생할 수 있음
 	private String email;
 	private String phoneNum;
 	private int adminRight;
@@ -14,7 +14,7 @@ public class UserVO {
 		
 	}
 
-	public UserVO(String id, String password, String name, int birthDate, String email, String phoneNum) {
+	public UserVO(String id, String password, String name, String birthDate, String email, String phoneNum) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -48,11 +48,11 @@ public class UserVO {
 		this.name = name;
 	}
 
-	public int getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(int birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

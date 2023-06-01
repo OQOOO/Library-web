@@ -1,4 +1,4 @@
-package kr.ac.kopo.biz.book;
+package kr.ac.kopo.controller.book;
 
 import java.util.ArrayList;
 import java.util.List;

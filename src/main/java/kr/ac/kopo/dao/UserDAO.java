@@ -11,6 +11,7 @@ import kr.ac.kopo.vo.UserVO;
 
 public class UserDAO {
 	
+	// 지금의 오류는 birthDate 타입을 int에서 Date 타입으로 바꿔서 발생하는 오류임
 	public boolean idChack(String id) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ID, PASSWORD ");
@@ -34,7 +35,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		
-		// 湲곗〈�뿉 �뾾�쑝硫� true �엳�쑝硫� false
+		// 아이디가 중복이 아닐경우 true 반환
 		return chackCnt == 0 ? true : false;
 	}
 
@@ -44,7 +45,7 @@ public class UserDAO {
 		sql.append("INSERT INTO USER_INFO(ID, PASSWORD, NAME, ");
 		sql.append("BIRTH_DATE, EMAIL, PHONE_NUM)");
 		sql.append("VALUES(?, ?, ? ");
-		sql.append(			", to_date(?, 'YYYYMMDD'), ?, ?)");
+		sql.append(	", to_date(?, 'YYYY-MM-DD'), ?, ?)");
 		
 		try (
 			Connection conn = new ConnectionFactory().getConnection();
@@ -53,7 +54,7 @@ public class UserDAO {
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPassword());
 			pstmt.setString(3, vo.getName());
-			pstmt.setInt(4, vo.getBirthDate()); // �궇�옄媛믪쑝濡� 諛붽퓭�빞�븿
+			pstmt.setString(4, vo.getBirthDate()); // �궇�옄媛믪쑝濡� 諛붽퓭�빞�븿
 			pstmt.setString(5, vo.getEmail());
 			pstmt.setString(6, vo.getPhoneNum());
 			
@@ -121,10 +122,7 @@ public class UserDAO {
 			userVo.setName(rs.getString("NAME"));
 			
 			// �깮�씪 泥섎━
-			String sb = rs.getString(4);
-			sb = sb.split(" ")[0];
-			sb = sb.replace("-", "");
-			userVo.setBirthDate(Integer.parseInt(sb));
+			userVo.setBirthDate(rs.getString(4).split(" ")[0]);
 			
 			userVo.setEmail(rs.getString("EMAIL"));
 			userVo.setPhoneNum(rs.getString("PHONE_NUM"));
@@ -140,7 +138,7 @@ public class UserDAO {
 	public void userDataUpdate(UserVO vo) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("UPDATE USER_INFO ");
-		sql.append("SET PASSWORD = ?, NAME = ?, BIRTH_DATE = to_date(?, 'YYYYMMDD'), EMAIL = ?, PHONE_NUM = ? ");
+		sql.append("SET PASSWORD = ?, NAME = ?, BIRTH_DATE = to_date(?, 'YYYY-MM-DD'), EMAIL = ?, PHONE_NUM = ? ");
 		sql.append("WHERE ID = ? ");
 		
 		try (
@@ -149,7 +147,7 @@ public class UserDAO {
 		){
 			pstmt.setString(1, vo.getPassword());
 			pstmt.setString(2, vo.getName());
-			pstmt.setInt(3, vo.getBirthDate()); // �궇�옄媛믪쑝濡� 諛붽퓭�빞�븿
+			pstmt.setString(3, vo.getBirthDate()); // �궇�옄媛믪쑝濡� 諛붽퓭�빞�븿
 			pstmt.setString(4, vo.getEmail());
 			pstmt.setString(5, vo.getPhoneNum());
 			pstmt.setString(6, vo.getId());

@@ -3,11 +3,8 @@ package kr.ac.kopo.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import kr.ac.kopo.biz.book.*;
-import kr.ac.kopo.biz.user.LoginController;
-import kr.ac.kopo.biz.user.LogoutController;
-import kr.ac.kopo.biz.user.PasswordCheckController;
-import kr.ac.kopo.biz.user.UserInfoController;
+import kr.ac.kopo.controller.book.*;
+import kr.ac.kopo.controller.user.*;
 
 public class HandlerMapping {
 	private Map<String, Controller> mappings;
@@ -22,6 +19,7 @@ public class HandlerMapping {
 		mappings.put("/Logout.do", new LogoutController());
 		mappings.put("/PasswordCheck.do", new PasswordCheckController());
 		mappings.put("/ViewUserInfo.do", new UserInfoController());
+		mappings.put("/Singup.do", new SingupController());
 	}
 	
 	public Controller getController(String path) {

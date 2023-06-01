@@ -66,7 +66,10 @@
 	<form method="post" action ="Login.do">
 		<div class="inputBox">
 			<p class="idpw">아이디</p>
-			<input class="ipt" type="text" pattern="[A-Za-z0-9]+" title="아이디는 영어와 숫자만 사용할 수 있습니다." id='id' name = "id" value=${param.bId }><br>
+			<input class="ipt" type="text" pattern="[A-Za-z0-9]+" 
+			oninvalid="setCustomValidity('잘못된 입력입니다.')"
+			id='id' name = "id" value=${param.bId }><br>
+			
 			<c:if test="${param.id == 'false'}">
 				${"<p id='errer'>아이디를 입력하세요</p>"}
 			</c:if>
@@ -84,9 +87,14 @@
 		<input id="logInButton" type="submit" value="로그인">
 		<!-- 뒤로 -->
 	</form>
-	<form method="post" action ="./Index.jsp">
-	<input type="submit" value="뒤로">
-</form>
+		<form method="post" action ="./Index.jsp">
+		<input type="submit" value="뒤로">
+	</form>
+	</form>
+		<form method="post" action ="./SingupPage.jsp">
+		<input type="submit" value="회원가입">
+	</form>
+	
 	</div>
 </body>
 </html>

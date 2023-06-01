@@ -1,4 +1,4 @@
-package kr.ac.kopo.biz.user;
+package kr.ac.kopo.controller.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
