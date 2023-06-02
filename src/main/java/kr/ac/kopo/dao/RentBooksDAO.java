@@ -12,7 +12,7 @@ import kr.ac.kopo.vo.UserVO;
 
 public class RentBooksDAO {
 
-	public List<BookVO> getUserRentData(UserVO vo) {
+	public List<BookVO> getUserRentData(String id) {
 		
 		List<BookVO> bookList = new ArrayList<>();
 		
@@ -25,7 +25,7 @@ public class RentBooksDAO {
 			Connection conn = new ConnectionFactory().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		){
-			pstmt.setString(1, vo.getId());
+			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				/////////
@@ -34,13 +34,13 @@ public class RentBooksDAO {
 				book.setRentUserId(rs.getString(2));
 				book.setBookName(rs.getString(3));
 				
-				// 대여일 처리
+				// ���뿬�씪 泥섎━
 				String rd = rs.getString(4);
 				rd = rd.split(" ")[0];
 				rd = rd.replace("-", "");
 				book.setRentalDate(Integer.parseInt(rd));
 				
-				// 반납일 처리
+				// 諛섎궔�씪 泥섎━
 				String re = rs.getString(5);
 				re = re.split(" ")[0];
 				re = re.replace("-", "");

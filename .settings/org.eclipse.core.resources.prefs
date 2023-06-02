@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
 encoding//src/main/java/kr/ac/kopo/dao/LibraryBooksDAO.java=UTF-8
+encoding//src/main/java/kr/ac/kopo/dao/RentBooksDAO.java=UTF-8
 encoding//src/main/java/kr/ac/kopo/dao/UserDAO.java=UTF-8

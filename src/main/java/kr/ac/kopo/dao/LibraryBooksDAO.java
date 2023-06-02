@@ -21,7 +21,7 @@ public class LibraryBooksDAO {
 		String writer = vo.getWriter();
 		String publisher = vo.getPublisher();
 		
-		// 신비하고 기묘한 로직
+		// 선택한 조건들에 모두 해당하는것만 검색할 수 있도록 하는 로직
 		String orAnd1 = (bookName == "" || writer == "") ? "OR" : "AND";
 		String orAnd2 = (writer == "" || publisher == "") ? "OR" : "AND";
 		orAnd1 = bookName != "" && publisher != "" ? "AND" : "OR";

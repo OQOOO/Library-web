@@ -63,7 +63,7 @@
 		
 		<input type="submit" value="변경사항 적용">
 		</form>
-		<form method="post" action ="./MyPage.jsp">
+		<form method="post" action ="../MyPage.jsp">
 		<input type="submit" value="뒤로">
 	</form>
 </body>

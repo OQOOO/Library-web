@@ -18,16 +18,16 @@
 </style>
 </head>
 <body>
-<form method="post" action ="./Index.jsp">
-	<input type="submit" value="뒤로">
-</form>
-책검색
-<form method="post" action ="BookSearch.do">
-	제목<input type="text" name="title"><br>
-	작가<input type="text" name="writer"><br>
-	출판<input type="text" name="publisher"><br>
-	<input type="submit" value="검색">
-</form>
+	<form method="post" action ="../Index.jsp">
+		<input type="submit" value="뒤로">
+	</form>
+	책검색
+	<form method="post" action ="BookSearch.do">
+		제목<input type="text" name="title"><br>
+		작가<input type="text" name="writer"><br>
+		출판<input type="text" name="publisher"><br>
+		<input type="submit" value="검색">
+	</form>
 	<c:forEach items="${userSelect}" var="se"  varStatus="status">
         ${se}<c:if test="${!status.last}">,</c:if>
     </c:forEach>
@@ -36,7 +36,12 @@
     </c:if>
 
     <c:forEach items="${booksInfo}" var="vo">
-        <div class="bookInfoDiv">${vo.bookName}, ${vo.isbn}</div>
+        <div class="bookInfoDiv">${vo.bookName}, ${vo.isbn}
+        	<form method="post" action ="BookRent.do">
+        		<input type="hidden" name="isbn" value="${vo.isbn }">
+        		<input type="submit" value="대여하기">
+        	</form>
+        </div>
     </c:forEach>
 </body>
 </html>
