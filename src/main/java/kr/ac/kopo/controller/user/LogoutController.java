@@ -12,7 +12,7 @@ public class LogoutController implements Controller{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		session.removeAttribute("id");
-		
-		return "Index.jsp";
+		session.removeAttribute("admin");
+		return "/Index.jsp";
 	}
 }

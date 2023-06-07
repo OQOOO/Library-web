@@ -16,6 +16,6 @@ public class BoardViewController implements Controller{
 		BoardDAO dao = new BoardDAO();
 		List<BoardVO> postList = dao.boardView();
 		request.setAttribute("postList", postList);
-		return "./userBoard/Board.jsp";
+		return "/userBoard/Board.jsp";
 	}
 }

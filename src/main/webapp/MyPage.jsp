@@ -17,7 +17,7 @@
     <form class="topMenuForm" method="post" action="Withdrawal.do">
 		<input class="headerMenus" type="submit" value="È¸¿øÅ»Åð">
 	</form>
-	<form class="topMenuForm" method="post" action="./MainPage.jsp">
+	<form class="topMenuForm" method="post" action="IndexMain.do">
 		<input type="submit" value="µÚ·Î">
 	</form>
 </body>

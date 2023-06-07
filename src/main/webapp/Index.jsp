@@ -108,14 +108,14 @@ header {
 <body>
 
 	<c:if test="${not empty sessionScope.id}">
-    	<c:set var="nextURL" value="MainPage.jsp?id=${sessionScope.id}" />
+    	<c:set var="nextURL" value="IndexMain.do" />
   	  	<c:redirect url="${nextURL}" />
 	</c:if>
 	
 	    <header>
 	    
         <div id="menuContainer" class="container">
-            <form id="loginForm" method="post" action="./LoginPage.jsp">
+            <form id="loginForm" method="post" action="LoginPage.do">
                 <input id="loginbutton" class="headerMenus" type="submit" value="로그인">
             </form>
         </div>
@@ -129,22 +129,22 @@ header {
     <div id="main">
         <div class="container" id="mainMenuCon">
             <div>
-                <form method="post" action="./BookSearch.jsp">
+                <form method="post" action="LoginPage.do">
                     <input class="mainMenu" type="submit" value="도서검색">
                 </form>
             </div>
             <div>
-                <form method="post" action="./LoginPage.jsp">
+                <form method="post" action="LoginPage.do">
                     <input class="mainMenu" type="submit" value="도서대여">
                 </form>
             </div>
             <div>
-                <form method="post" action="./LoginPage.jsp">
+                <form method="post" action="LoginPage.do">
                     <input class="mainMenu" type="submit" value="도서반납">
                 </form>
             </div>
             <div>
-                <form method="post" action="">
+                <form method="post" action="LoginPage.do">
                     <input class="mainMenu" type="submit" value="게시판">
                 </form>
             </div>

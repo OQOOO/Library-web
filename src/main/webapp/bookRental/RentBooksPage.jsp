@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="./MainPage.jsp">
+	<form method="post" action="IndexMain.do">
 		<input type="submit" value="뒤로">
 	</form>
 	<h1>대여한 책 목록</h1>
 	<c:forEach items="${bookList}" var="vo">
-        <div class="bookInfoDiv">${vo.bookName}, ${vo.isbn}</div>
+        <div class="bookInfoDiv">${vo.bookName}, ${vo.isbn}, ${vo.rentalDate }</div>
         <form method="post" action ="BookReturn.do">
         		<input type="hidden" name="isbn" value="${vo.isbn }">
         		<input type="submit" value="반납하기">

@@ -100,7 +100,7 @@ header {
     <header>
     
         <div id="menuContainer" class="container">
-	        <form class="topMenuForm" method="post" action="./MyPage.jsp">
+	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
 			</form>
@@ -119,7 +119,7 @@ header {
     <div id="main">
         <div class="container" id="mainMenuCon">
             <div>
-                <form method="post" action="./bookRental/BookSearch.jsp">
+                <form method="post" action="SearchBookPage.do">
                     <input class="mainMenu" type="submit" value="도서검색">
                 </form>
             </div>
@@ -129,7 +129,7 @@ header {
                 </form>
             </div>
             <div>
-                <form method="post" action="./MyPage.jsp">
+                <form method="post" action="MyPage.do">
                     <input class="mainMenu" type="submit" value="마이페이지">
                 </form>
             </div>

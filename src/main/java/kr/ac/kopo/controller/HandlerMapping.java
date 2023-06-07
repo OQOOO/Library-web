@@ -11,6 +11,16 @@ import kr.ac.kopo.controller.board.PostViewController;
 import kr.ac.kopo.controller.board.UpdateBoardController;
 import kr.ac.kopo.controller.board.UpdateBoardController2;
 import kr.ac.kopo.controller.book.*;
+import kr.ac.kopo.controller.pageMove.GoAdminAddBookPage;
+import kr.ac.kopo.controller.pageMove.GoAdminBookManagementPage;
+import kr.ac.kopo.controller.pageMove.GoAdminMainPage;
+import kr.ac.kopo.controller.pageMove.GoAdminRemoveBookPageController;
+import kr.ac.kopo.controller.pageMove.GoAdminUserManagementPage;
+import kr.ac.kopo.controller.pageMove.GoLoginPageController;
+import kr.ac.kopo.controller.pageMove.GoMyPageController;
+import kr.ac.kopo.controller.pageMove.GoSearchBookPageController;
+import kr.ac.kopo.controller.pageMove.GoSingupPageController;
+import kr.ac.kopo.controller.pageMove.IndexMainController;
 import kr.ac.kopo.controller.user.*;
 
 public class HandlerMapping {
@@ -19,9 +29,16 @@ public class HandlerMapping {
 	public HandlerMapping() {
 		System.out.println("핸들러 매핑 실행 성공");
 		mappings = new HashMap<>();
-		//mappings.put("/key", new Controller상속받은객체);
+		
+		// 단순 페이지 이동
+		mappings.put("/IndexMain.do", new IndexMainController()); // 시작페이지 또는 메인페이지
+		mappings.put("/SearchBookPage.do", new GoSearchBookPageController());
+		mappings.put("/MyPage.do", new GoMyPageController());
+		mappings.put("/LoginPage.do", new GoLoginPageController());
+		mappings.put("/SingupPage.do", new GoSingupPageController());
+		
+		// 유저
 		mappings.put("/test", new Test());
-		mappings.put("/BookSearch.do", new BookSearchController());
 		mappings.put("/Login.do", new LoginController());
 		mappings.put("/Logout.do", new LogoutController());
 		mappings.put("/PasswordCheck.do", new PasswordCheckController());
@@ -31,6 +48,7 @@ public class HandlerMapping {
 		mappings.put("/UserDateUpdate.do", new UserDataUpdateController());
 		
 		// 책 대출, 반납,
+		mappings.put("/BookSearch.do", new BookSearchController());
 		mappings.put("/BookRent.do", new BookRentController());
 		mappings.put("/BookReturn.do", new BookReturnController());
 		
@@ -46,6 +64,25 @@ public class HandlerMapping {
 		mappings.put("/DeleteBoard.do", new DeleteBoardController());
 		mappings.put("/UpdateBoard.do", new UpdateBoardController());
 		mappings.put("/UpdateBoard2.do", new UpdateBoardController2());
+		
+		
+		//////////////////////////////////////////////////////////////
+		// 관리자 페이지
+		//////////////////////////////////////////////////////////////
+		
+		// 페이지 이동
+		mappings.put("/BookManagementPage.do", new GoAdminBookManagementPage());
+		mappings.put("/AdminMainPage.do", new GoAdminMainPage());
+		mappings.put("/AdminAddBookPage.do", new GoAdminAddBookPage());
+		mappings.put("/AdminRemoveBookPage.do", new GoAdminRemoveBookPageController());
+		
+		mappings.put("/AdminUserManagementPage.do", new GoAdminUserManagementPage());
+		
+		// 도서 관리
+		mappings.put("/AdminBookSearch.do", new AdminBookSearchController());
+		mappings.put("/AddBook.do", new AdminAddBookController());
+		mappings.put("/AdminRemoveBook.do", new AdminRemoveBookController());
+		
 		
 		
 	}

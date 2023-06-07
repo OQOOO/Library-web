@@ -29,15 +29,15 @@ public class LibraryBooksDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT * ");
 		sql.append("FROM LIBRARY_BOOKS "); // 
-		sql.append("WHERE BOOK_NAME = ? " + orAnd1 + " (WRITER = ? " + orAnd2 + " PUBLISHER = ? )");
+		sql.append("WHERE BOOK_NAME LIKE ? AND (WRITER LIKE ? AND PUBLISHER LIKE ? )");
 		
 		try (
 			Connection conn = new ConnectionFactory().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		){
-			pstmt.setString(1, bookName);
-			pstmt.setString(2, writer);
-			pstmt.setString(3, publisher);
+			pstmt.setString(1, "%"+bookName+"%");
+			pstmt.setString(2, "%"+writer+"%");
+			pstmt.setString(3, "%"+publisher+"%");
 			
 			ResultSet rs = pstmt.executeQuery();
 			

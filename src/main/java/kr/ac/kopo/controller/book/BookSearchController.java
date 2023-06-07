@@ -15,27 +15,44 @@ public class BookSearchController implements Controller{
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 	 
 	 // 데이터 받아오기
-	 	String title = request.getParameter("title");
-		String writer = request.getParameter("writer");
-		String publisher = request.getParameter("publisher");
+	 	String title = null;
+		String writer = null;
+		String publisher = null;
 		
-		// 비즈니스 로직 실행
+		
+		List<String> selectList = new ArrayList<>();
+		
+		// 도서 대여 후 목록출력
+		if (request.getParameter("re").equals("bookRentCon")) {
+			selectList.add((String)request.getAttribute("bookName"));
+			selectList.add((String)request.getAttribute("writer"));
+			selectList.add((String)request.getAttribute("publisher"));
+			
+			title = (String)request.getAttribute("bookName");
+			writer = (String)request.getAttribute("writer");
+			publisher = (String)request.getAttribute("publisher");
+			System.out.println("test");
+			
+		// 일반 검색후 목록출력	
+		} else {
+			
+			title = request.getParameter("title");
+			writer = request.getParameter("writer");
+			publisher = request.getParameter("publisher");
+			
+			selectList.add(title);
+			selectList.add(writer);
+			selectList.add(publisher);
+		}
+		
+		
+		//
 		LibraryBooksDAO dao = new LibraryBooksDAO();
 		BookVO vo = new BookVO();
 		vo.setBookName(title);
 		vo.setWriter(writer);
 		vo.setPublisher(publisher);
 		
-		List<String> selectList = new ArrayList<>();
-		if(title != "") {
-			selectList.add(title);
-		}
-		if(writer !="") {
-			selectList.add(writer);
-		}
-		if(publisher !="") {
-			selectList.add(publisher);
-		}
 		
 		List<BookVO> bookList = dao.searchBooks(vo);
 		
@@ -44,6 +61,6 @@ public class BookSearchController implements Controller{
 		request.setAttribute("userSelect", selectList);
 		
 		// 경로 반환
-		return "BookSearch.jsp";
+		return "/bookRental/BookSearch.jsp";
 	}
 }

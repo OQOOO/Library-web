@@ -20,10 +20,12 @@ public class GetRentalBookListController implements Controller {
 		List<BookVO> bookList = dao.getUserRentData(id);
 		request.setAttribute("bookList", bookList);
 		String rePage = request.getParameter("rePage");
+		
+		
 		if(rePage.equals("RentBooksPage")) {
-			return "./bookRental/RentBooksPage.jsp";
+			return "/bookRental/RentBooksPage.jsp";
 		}
-		return "./myPages/RentalBookList.jsp";
+		return "/myPages/RentalBookList.jsp";
 	}
 
 }

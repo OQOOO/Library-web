@@ -7,14 +7,14 @@ public class BookVO {
 	private String writer;
 	private String publisher;
 	private String rentUserId;
-	private int rentalDate;
-	private int returnDate;
+	private String rentalDate;
+	private String returnDate;
 	
 	public BookVO() {
 		
 	}
 	
-	// 도서 정보
+	// �룄�꽌 �젙蹂�
 	public BookVO(String isbn, String bookName, String writer, String publisher, String rentUserId) {
 		super();
 		this.isbn = isbn;
@@ -24,15 +24,16 @@ public class BookVO {
 		this.rentUserId = rentUserId;
 	}
 
-	// 대여 정보
-	public BookVO(String isbn, String rentUserId, String bookName, int rentalDate, int returnDate) {
+	// ���뿬 �젙蹂�
+	/*
+	public BookVO(String isbn, String rentUserId, String bookName, String rentalDate, String returnDate) {
 		super();
 		this.isbn = isbn;
 		this.rentUserId = rentUserId;
 		this.bookName = bookName;
 		this.rentalDate = rentalDate;
 		this.returnDate = returnDate;
-	}
+	}*/
 
 	public String getIsbn() {
 		return isbn;
@@ -74,19 +75,19 @@ public class BookVO {
 		this.rentUserId = rentUserId;
 	}
 
-	public int getRentalDate() {
+	public String getRentalDate() {
 		return rentalDate;
 	}
 
-	public void setRentalDate(int rentalDate) {
+	public void setRentalDate(String rentalDate) {
 		this.rentalDate = rentalDate;
 	}
 
-	public int getReturnDate() {
+	public String getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(int returnDate) {
+	public void setReturnDate(String returnDate) {
 		this.returnDate = returnDate;
 	}
 

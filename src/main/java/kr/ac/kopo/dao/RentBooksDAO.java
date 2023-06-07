@@ -34,17 +34,11 @@ public class RentBooksDAO {
 				book.setRentUserId(rs.getString(2));
 				book.setBookName(rs.getString(3));
 				
-				// ���뿬�씪 泥섎━
-				String rd = rs.getString(4);
-				rd = rd.split(" ")[0];
-				rd = rd.replace("-", "");
-				book.setRentalDate(Integer.parseInt(rd));
+				// 대여일
+				book.setRentalDate(rs.getString(4));
 				
-				// 諛섎궔�씪 泥섎━
-				String re = rs.getString(5);
-				re = re.split(" ")[0];
-				re = re.replace("-", "");
-				book.setReturnDate(Integer.parseInt(re));
+				// 반납일
+				book.setReturnDate(rs.getString(5));
 				
 				/////////
 				
@@ -57,6 +51,42 @@ public class RentBooksDAO {
 		}		
 		
 		return bookList;
+	}
+	
+	public BookVO getRentDataWithIsbn(String isbn) {
+		
+		
+		BookVO book = new BookVO();
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * ");
+		sql.append("FROM USER_RENTED ");
+		sql.append("WHERE ISBN = ? ");
+		
+		try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				){
+			pstmt.setString(1, isbn);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				/////////
+				book.setIsbn(rs.getString(1));
+				book.setRentUserId(rs.getString(2));
+				book.setBookName(rs.getString(3));
+				
+				// 대여일
+				book.setRentalDate(rs.getString(4));
+				
+				// 반납일
+				book.setReturnDate(rs.getString(5));
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		
+		return book;
 	}
 	
 	public void returnBook(String id) {

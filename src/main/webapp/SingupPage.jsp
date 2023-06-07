@@ -58,7 +58,7 @@
 		
 		<input type="submit" value="회원가입">
 		</form>
-		<form method="post" action ="./Index.jsp">
+		<form method="post" action ="IndexMain.do">
 		<input type="submit" value="뒤로">
 	</form>
 </body>

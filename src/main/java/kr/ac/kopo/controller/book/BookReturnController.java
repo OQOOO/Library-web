@@ -14,18 +14,19 @@ public class BookReturnController implements Controller{
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		String isbn = request.getParameter("isbn");
+		String re = "GetRentalBooks.do?rePage=RentBooksPage";
 		
 		LibraryBooksDAO dao = new LibraryBooksDAO();
 		BookVO vo = dao.searchBookWithIsbn(isbn);
 		
 		if (vo.getRentUserId() == null || !vo.getRentUserId().equals(id)) {
 			System.out.println("대여하지 않은 도서입니다.");
-			return "./bookRental/RentBooksPage.jsp";
+			re = "./bookRental/RentBooksPage.jsp";
 		}
 		
 		dao.returnBook(isbn);
 		System.out.println("반납이 완료되었습니다.");
-		return "GetRentalBooks.do?rePage=RentBooksPage";
+		return re;
 	}
 
 }
