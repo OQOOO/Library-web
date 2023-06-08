@@ -177,29 +177,23 @@ public class UserDAO {
 		}
 	}
 	
-	public List<UserVO> adminSearchMembers(UserVO vo) {
+	// 유저탐색
+	
+	public List<UserVO> searchMembersWithId(String id) {
 		
 		List<UserVO> userList = new ArrayList<>();
-		
-		String id = vo.getId();
-		String name = vo.getName();
-		String email = vo.getEmail();
-		
-		String andOr = (id == "" || name == "") ? "OR" : "AND";
-		String andOr2 = (name == "" || email == "") ? "OR" : "AND";
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT * ");
 		sql.append("FROM USER_INFO ");
-		sql.append("WHERE ID = ? " + andOr + " NAME = ? " + andOr2 + " EMAIL = ? ");
+		sql.append("WHERE ID LIKE ? ");
 		
 		try (
 			Connection conn = new ConnectionFactory().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		){
-			pstmt.setString(1, id);
-			pstmt.setString(2, name);
-			pstmt.setString(3, email);
+			pstmt.setString(1, "%"+id+"%");
+
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -208,11 +202,7 @@ public class UserDAO {
 				userVo.setId(rs.getString(1));
 				userVo.setPassword(rs.getString(2));
 				userVo.setName(rs.getString(3));
-				
-				// �쟾�솕踰덊샇 泥섎━
-				String temp = rs.getString(4).split(" ")[0].replace("-", "");
-				userVo.setBirthDate(Integer.parseInt(temp));
-				
+				userVo.setBirthDate(rs.getString(4).split(" ")[0]);
 				userVo.setEmail(rs.getString(5));
 				userVo.setPhoneNum(rs.getString(6));
 				userVo.setAdminRight(rs.getInt(7));
@@ -226,8 +216,119 @@ public class UserDAO {
 		}
 		return userList;
 	}
+	public List<UserVO> searchMembersWithName(String name) {
+		
+		List<UserVO> userList = new ArrayList<>();
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * ");
+		sql.append("FROM USER_INFO ");
+		sql.append("WHERE NAME LIKE ? ");
+		
+		try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				){
+			pstmt.setString(1, "%"+name+"%");
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				UserVO userVo = new UserVO();
+				
+				userVo.setId(rs.getString(1));
+				userVo.setPassword(rs.getString(2));
+				userVo.setName(rs.getString(3));
+				userVo.setBirthDate(rs.getString(4).split(" ")[0]);
+				userVo.setEmail(rs.getString(5));
+				userVo.setPhoneNum(rs.getString(6));
+				userVo.setAdminRight(rs.getInt(7));
+				
+				userList.add(userVo);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
+	}
+	public List<UserVO> searchMembersWithEmail(String email) {
+		
+		List<UserVO> userList = new ArrayList<>();
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * ");
+		sql.append("FROM USER_INFO ");
+		sql.append("WHERE EMAIL LIKE ? ");
+		
+		try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				){
+			pstmt.setString(1, "%"+email+"%");
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				UserVO userVo = new UserVO();
+				
+				userVo.setId(rs.getString(1));
+				userVo.setPassword(rs.getString(2));
+				userVo.setName(rs.getString(3));
+				userVo.setBirthDate(rs.getString(4).split(" ")[0]);
+				userVo.setEmail(rs.getString(5));
+				userVo.setPhoneNum(rs.getString(6));
+				userVo.setAdminRight(rs.getInt(7));
+				
+				userList.add(userVo);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
+	}
+	public List<UserVO> searchMembersWithPhoneNum(String phoneNum) {
+		
+		List<UserVO> userList = new ArrayList<>();
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * ");
+		sql.append("FROM USER_INFO ");
+		sql.append("WHERE PHONE_NUM LIKE ? ");
+		
+		try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				){
+			pstmt.setString(1, "%"+phoneNum+"%");
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				UserVO userVo = new UserVO();
+				
+				userVo.setId(rs.getString(1));
+				userVo.setPassword(rs.getString(2));
+				userVo.setName(rs.getString(3));
+				userVo.setBirthDate(rs.getString(4).split(" ")[0]);
+				userVo.setEmail(rs.getString(5));
+				userVo.setPhoneNum(rs.getString(6));
+				userVo.setAdminRight(rs.getInt(7));
+				
+				userList.add(userVo);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
+	}
 	
-	public List<UserVO> adminSearchAllMembers() {
+	public List<UserVO> searchAllMembers() {
 		
 		List<UserVO> userList = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
@@ -246,10 +347,8 @@ public class UserDAO {
 				userVo.setId(rs.getString(1));
 				userVo.setPassword(rs.getString(2));
 				userVo.setName(rs.getString(3));
-				
-				// �쟾�솕踰덊샇 泥섎━
-				String temp = rs.getString(4).split(" ")[0].replace("-", "");
-				userVo.setBirthDate(Integer.parseInt(temp));
+
+				userVo.setBirthDate(rs.getString(4).split(" ")[0]);
 				
 				userVo.setEmail(rs.getString(5));
 				userVo.setPhoneNum(rs.getString(6));

@@ -98,7 +98,7 @@ public class RentBooksDAO {
 				Connection conn = new ConnectionFactory().getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 				) {
-			pstmt.setString(1, id); //////////////////////asdfjoasifjlsa;hf
+			pstmt.setString(1, id); //////////////
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {

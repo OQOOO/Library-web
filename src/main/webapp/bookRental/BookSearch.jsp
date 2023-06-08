@@ -56,7 +56,7 @@ header {
 }
 
 .bookInfoDiv {
-	background-color: #ededed;
+	background-color: rgb(240, 242, 244);
 	height: 100px;
 	width: 700px;
 	margin-top: 10px;
@@ -187,6 +187,7 @@ header {
 
 	<div id="main">
 		<h2>원하는 조건으로 검색해보세요</h2>
+		<h5>입력받은 조건을 모두 만족한 검색결과만이 표시됩니다.</h5>
 		<form id="searchInputForm" method="post" action="BookSearch.do?re=bookSearch">
 			<div id="searchDiv">
 				<div id="inputBox">

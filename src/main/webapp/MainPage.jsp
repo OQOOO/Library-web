@@ -98,7 +98,6 @@ header {
 </head>
 <body>
     <header>
-    
         <div id="menuContainer" class="container">
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
@@ -112,7 +111,7 @@ header {
     </header>
     <div id="v">
         <div class="container">
-            <h1 id="mainTitle">로그인 성공 페이지</h1>
+            <h1 id="mainTitle">${sessionScope.id}님 환영합니다.</h1>
         </div>
     </div>
     <hr>

@@ -24,11 +24,11 @@ public class UserInfoController implements Controller {
 		
 		switch (re) {
 		case "pwCheck":
-			return "UserInfoPage.jsp";
+			return "/myPages/UserInfoPage.jsp";
 		case "infoPage":
-			return "UserDataUpdate.jsp";
+			return "/myPages/UserDataUpdate.jsp";
 		default:
-			return "UserInfoPage.jsp";
+			return "/myPages/UserInfoPage.jsp";
 		}
 	}
 }

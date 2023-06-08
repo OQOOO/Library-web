@@ -15,9 +15,11 @@ import kr.ac.kopo.controller.pageMove.GoAdminAddBookPage;
 import kr.ac.kopo.controller.pageMove.GoAdminBookManagementPage;
 import kr.ac.kopo.controller.pageMove.GoAdminMainPage;
 import kr.ac.kopo.controller.pageMove.GoAdminRemoveBookPageController;
+import kr.ac.kopo.controller.pageMove.GoAdminUserBookManagementPageController;
 import kr.ac.kopo.controller.pageMove.GoAdminUserManagementPage;
 import kr.ac.kopo.controller.pageMove.GoLoginPageController;
 import kr.ac.kopo.controller.pageMove.GoMyPageController;
+import kr.ac.kopo.controller.pageMove.GoPwCheckPageController;
 import kr.ac.kopo.controller.pageMove.GoSearchBookPageController;
 import kr.ac.kopo.controller.pageMove.GoSingupPageController;
 import kr.ac.kopo.controller.pageMove.IndexMainController;
@@ -36,6 +38,10 @@ public class HandlerMapping {
 		mappings.put("/MyPage.do", new GoMyPageController());
 		mappings.put("/LoginPage.do", new GoLoginPageController());
 		mappings.put("/SingupPage.do", new GoSingupPageController());
+
+		mappings.put("/PwCheckPage.do", new GoPwCheckPageController());
+		mappings.put("/UserInfo.do", new UserInfoController());
+		
 		
 		// 유저
 		mappings.put("/test", new Test());
@@ -44,8 +50,8 @@ public class HandlerMapping {
 		mappings.put("/PasswordCheck.do", new PasswordCheckController());
 		mappings.put("/ViewUserInfo.do", new UserInfoController());
 		mappings.put("/Singup.do", new SingupController());
-		mappings.put("/UserInfo.do", new UserInfoController());
 		mappings.put("/UserDateUpdate.do", new UserDataUpdateController());
+		mappings.put("/Withdrawal.do", new WithdrawalController());
 		
 		// 책 대출, 반납,
 		mappings.put("/BookSearch.do", new BookSearchController());
@@ -53,7 +59,6 @@ public class HandlerMapping {
 		mappings.put("/BookReturn.do", new BookReturnController());
 		
 		mappings.put("/GetRentalBooks.do", new GetRentalBookListController());
-		mappings.put("/Withdrawal.do", new WithdrawalController());
 		mappings.put("/UserDataRemove.do", new UserDataRemoveController());
 		
 		// 보드
@@ -84,6 +89,14 @@ public class HandlerMapping {
 		mappings.put("/AdminRemoveBook.do", new AdminRemoveBookController());
 		
 		
+		// 유저 관리
+		mappings.put("/AdminUserSearch.do", new AdminUserSearchController());
+		mappings.put("/AdminUserRemove.do", new AdminUserRemoveController());
+		mappings.put("/AdminSetUserAdmin.do", new AdminUserSetAdminController());
+		
+		mappings.put("/AdminUserBookManagementPage.do", new GoAdminUserBookManagementPageController());
+		mappings.put("/BookReturnAdmin.do", new BookReturnAdminController());
+
 		
 	}
 	

@@ -95,18 +95,18 @@ header {
 <body>
 	<header>
         <div id="menuContainer" class="container">
-        	<form class="topMenuForm" method="post" action="IndexMain.do">
+        	<form class="topMenuForm" method="post" action="AdminMainPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="메인페이지">
+				<input class="headerMenus" type="submit" value="관리자 페이지">
 			</form>
 			<form class="topMenuForm" method="post"
-				action="SearchBookPage.do">
+				action="BookManagementPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="도서검색">
+				<input class="headerMenus" type="submit" value="도서관리">
 			</form>
-	        <form class="topMenuForm" method="post" action="MyPage.do">
+	        <form class="topMenuForm" method="post" action="AdminAddBookPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="마이페이지">
+				<input class="headerMenus" type="submit" value="유저관리">
 			</form>
 	        <form class="topMenuForm" method="post" action="Logout.do">
 				<input type="text" name="logout" value="logout" style="display: none;">
@@ -115,14 +115,15 @@ header {
         </div>
     </header>
     <div id="main">
-		<h1>대여한 책 목록</h1>
+		<h1>${userId}가 대여한 책 목록</h1>
 		<c:forEach items="${bookList}" var="vo">
 	        <div class="bookInfoDiv">
 	        	<p class="bookInfoText" style="font-size:1.2em">${vo.bookName}</p>
 	        	<p class="bookInfoText" style="font-size:0.8em">대여일 : ${vo.rentalDate}</p>
+	        	
 	        	<p class="bookInfoText" style="font-size:0.8em; color:red;">반납일 : ${vo.returnDate}</p>
-		        
-		        <form method="post" action ="BookReturn.do">
+		        <form method="post" action ="BookReturnAdmin.do">
+		        	<input type="hidden" name="rentUserId" value="${vo.rentUserId }">
 	        		<input type="hidden" name="isbn" value="${vo.isbn }">
 	        		<input class="returnButton" type="submit" value="반납하기">
 	        	</form>

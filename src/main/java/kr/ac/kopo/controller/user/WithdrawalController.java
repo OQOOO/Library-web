@@ -34,9 +34,9 @@ public class WithdrawalController implements Controller{
 		// 만약 빌려간 책이 있다면
 		if(0 < bookLi.size()) {
 			request.setAttribute("isBookRent", "대여중인 도서가 있어 탈퇴가 불가능합니다.");
-			return "MyPage.jsp";
+			return "/MyPage.jsp";
 		}
-		return "./myPages/PwCheckWithdrawal.jsp";
+		return "/myPages/PwCheckWithdrawal.jsp";
 	}
 
 }

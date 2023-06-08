@@ -27,7 +27,7 @@ public class PasswordCheckController implements Controller {
 		if(obj != null) {
 			return "UserInfo.do?re=pwCheck";
 		} else {
-			return "InputPasswordPage.jsp";
+			return "/myPages/InputPasswordPage.jsp";
 		}
 	}
 	

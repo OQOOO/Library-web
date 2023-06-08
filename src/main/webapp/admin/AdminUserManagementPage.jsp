@@ -56,9 +56,9 @@ header {
 	height: 200px;
 }
 
-.bookInfoDiv {
+.userInfoDiv {
 	background-color: #ededed;
-	height: 100px;
+	height: 120px;
 	width: 700px;
 	margin-top: 10px;
 	border: solid 1px #cccccc;
@@ -66,38 +66,38 @@ header {
 	position: relative;
 }
 
-.bookInfoText {
+.userInfoText {
 	margin:0px;
 	margin-bottom: 5px;
 	margin-top: 5px;
 	margin-left: 5px;
 }
-.isRentText {
+
+.isAdminText {
+	position:absolute;
 	color:red;
-}
-
-.lentButton {
-	position: absolute;
-	bottom:0px;
-	right:0px;
-	height: 40%;
-	width: 150px;
-	background-color: #ffffff;
-	color: black;
 	margin:0px;
-	font-size: 15px;
-	clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%);
-	border:none;
-}
-.lentButton:hover {
-	background-color: #f6fdfe;
+	top: 5px;
+	right: 10px;
 }
 
+.userRemoveButton {
+	position: absolute;
+	bottom:5px;
+	right:5px;
+}
+.setAdminRightButton {
+	position: absolute;
+	bottom:5px;
+	right:90px;
+}
 
-.searchInput {
-	width: 530px;
-	height: 30px;
-	margin-top: 5px;
+.bookManageButton {
+	position: absolute;
+	right: 215px;
+	bottom: 5px;
+
+	width: 100px;
 }
 
 #main {
@@ -117,41 +117,46 @@ header {
 	font-weight: bold;
 }
 
-#searchDiv {
-	position: relative;
-	width: 700px;
-}
-
-#inputBox {
-	position: absolute;
-	left: 0px;
-}
 
 #inputBox div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
+#searchDiv {
+	position: relative;
+	width: 700px;
+	height: 50px;
+}
 
-#inputBox p {
-	display: inline;
-	font-size: 1.5em;
-	margin: 0px;
-	margin-top: 2px;
-	margin-right: 10px;
+
+#userInput {
+	position: absolute;
+	left: 107px;
+	height: 30px;
+	width: 480px;
+}
+
+#userSelect {
+	position: absolute;
+	height: 36px;
+	
 }
 
 #submitButton {
 	position: absolute;
 	right: 0px;
-	top: 5px;
-	height: 118px;
+
+	height: 36px;
 	width: 100px;
 }
 
+
 #space {
-	height: 130px;
+	height: 50px;
 }
+
+
 
 #midLine {
 	width: 100%;
@@ -159,7 +164,43 @@ header {
 	margin-bottom: 10px;
 	background-color: #a3a3a3;
 }
+
+
 </style>
+<script>
+	function userRemoveCheck(delId) {
+	
+	  var result = confirm("정말 삭제하겠습니까? 유저가 대여중인 책이 있다면 반납 처리됩니다." + delId);
+	  
+	  if (result) {
+		  var form = document.getElementById('del'+delId); // 폼의 ID를 선택
+		  
+		  if (form) {
+		    form.submit(); // 폼 서브밋
+		  }
+	  } else {
+	    // 취소 버튼을 클릭한 경우
+	    console.log('취소');
+	  }
+	}
+	
+	function userSetAdminCheck(setId) {
+	
+	  var result = confirm("정말 해당 유저에게 관리자 권한을 부여하시겠습니까? 해당 유저가 대여한 책은 반납 처리됩니다." + setId);
+	  
+	  if (result) {
+		  var form = document.getElementById('setAdmin'+setId); // 폼의 ID를 선택
+		  
+		  if (form) {
+		    form.submit(); // 폼 서브밋
+		  }
+	  } else {
+	    // 취소 버튼을 클릭한 경우
+	    console.log('취소');
+	  }
+	}
+
+</script>
 </head>
 <body>
 	<c:set var="admin" value="${sessionScope.admin }"/>
@@ -170,13 +211,9 @@ header {
 				<input class="headerMenus" type="submit" value="관리자 페이지">
 			</form>
 			<form class="topMenuForm" method="post"
-				action="GetRentalBooks.do?rePage=RentBooksPage">
+				action="BookManagementPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="유저 관리">
-			</form>
-			<form class="topMenuForm" method="post" action="MyPage.do">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="게시판 관리">
+				<input class="headerMenus" type="submit" value="도서 관리">
 			</form>
 			<form class="topMenuForm" method="post" action="Logout.do">
 				<input type="text" name="logout" value="logout"
@@ -187,25 +224,19 @@ header {
 	</header>
 
 	<div id="main">
-		<h1>유저 관리 페이지(지금은 도서관리 복사함)</h1>
-		<form method="post" action="AdminAddBookPage.do">
-			<input type="submit" value="도서 추가">
-		</form>
-		<form method="post" action="AdminRemoveBookPage.do">
-			<input type="submit" value="도서 삭제">
-		</form>
+		<h1>유저 관리 페이지</h1>
 		<h2>유저 정보 검색</h2>
-		<form id="searchInputForm" method="post" action="AdminBookSearch.do?re=bookSearch">
+		<form id="searchInputForm" method="post" action="AdminUserSearch.do?re=page">
 			<div id="searchDiv">
-				<div id="inputBox">
-					<select>
+
+					<select id="userSelect" name="userSelect">
 					  <option value="id">아이디</option>
 					  <option value="name">이름</option>
 					  <option value="email">이메일</option>
 					  <option value="phoneNum">전화번호</option>
 					</select>
-					<input type="text" name="searchValue">
-				</div>
+					<input id="userInput" type="text" name="searchValue">
+
 
 				<input id="submitButton" type="submit" value="검색">
 
@@ -215,37 +246,42 @@ header {
 		<div id="space"></div>
 		<div id="midLine"></div>
 		<div id="userSelect">
-			<c:forEach items="${userSelect}" var="se" varStatus="status">
-		        ${se}<c:if test="${!status.last}">,</c:if>
-			</c:forEach>
-			<c:if test="${not empty userSelect}"> 
-		    (으)로 검색결과
-		    </c:if>
+
 		</div>
 
-		<c:forEach items="${booksInfo}" var="vo">
-			<div class="bookInfoDiv">
-				<p class="bookInfoText" style="font-size:1.2em">${vo.bookName} _ ISBN: ${vo.isbn }</p>
-				<p class="bookInfoText" style="font-size:0.8em">${vo.writer}</p>
-				<c:if test="${not empty vo.rentUserId }">
-	
-					<p class="bookInfoText isRentText" style="font-size:0.8em">대여자: ${vo.rentUserId }</p>
-					<p class="bookInfoText isRentText" style="font-size:0.8em">대여일: ${vo.rentalDate}, 반납일: ${vo.returnDate }</p>
-					
+		<c:forEach items="${UsersInfo}" var="vo">
+			<div class="userInfoDiv">
+				<p class="userInfoText" style="font-size:1.0em">ID: ${vo.id}</p>
+				<c:if test="${vo.adminRight eq 1 }">
+					<p class="isAdminText" style="font-size:1.0em">관리자</p>
 				</c:if>
-				<c:if test="${empty vo.rentUserId }">
-					<c:if test="${empty admin }">
-					<form method="post" action="BookRent.do">
-						<input type="hidden" name="isbn" value="${vo.isbn }">
-						 
-						<input type="hidden" name="bookName" value="${userSelect[0]}"> 
-						<input type="hidden" name="writer" value="${userSelect[1]}"> 
-						<input type="hidden" name="publisher" value="${userSelect[2]}"> 
-						
-						<input class="lentButton" type="submit" value="대여하기">
-					</form>
-					</c:if>
-				</c:if>
+				<p class="userInfoText" style="font-size:0.8em">이름: ${vo.name}</p>
+				<p class="userInfoText" style="font-size:0.8em">생년월일: ${vo.birthDate}</p>
+				<p class="userInfoText" style="font-size:0.8em">이메일: ${vo.email}</p>
+				<p class="userInfoText" style="font-size:0.8em">전화번호: ${vo.phoneNum}</p>
+				
+				<input class="userRemoveButton" type="button" onclick="userRemoveCheck('${vo.id}')" value="유저 삭제">
+				<form id="del${vo.id}" action="AdminUserRemove.do" method="post">
+					<input type="hidden" name="adminSelect" value=${adminSelect }>
+					<input type="hidden" name="adminInput" value=${adminInput }>
+					<input type="hidden" name="userId" value=${vo.id }>
+				</form>
+				
+				<input class="setAdminRightButton" type="button" onclick="userSetAdminCheck('${vo.id}')" value="관리자권한 부여">
+				<form id="setAdmin${vo.id}" action="AdminSetUserAdmin.do" method="post">
+					<input type="hidden" name="adminSelect" value=${adminSelect }>
+					<input type="hidden" name="adminInput" value=${adminInput }>
+					<input type="hidden" name="userId" value=${vo.id }>
+				</form>
+				
+				<form action="AdminUserBookManagementPage.do" method="post">
+					<input type="hidden" name="adminSelect" value=${adminSelect }>
+					<input type="hidden" name="adminInput" value=${adminInput }>
+					<input type="hidden" name="userId" value=${vo.id }>
+					<input class="bookManageButton" type="submit" value="대여도서 확인">
+				</form>
+				
+				
 				
 			</div>
 		</c:forEach>

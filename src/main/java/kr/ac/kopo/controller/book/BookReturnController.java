@@ -21,7 +21,7 @@ public class BookReturnController implements Controller{
 		
 		if (vo.getRentUserId() == null || !vo.getRentUserId().equals(id)) {
 			System.out.println("대여하지 않은 도서입니다.");
-			re = "./bookRental/RentBooksPage.jsp";
+			re = "/bookRental/RentBooksPage.jsp";
 		}
 		
 		dao.returnBook(isbn);

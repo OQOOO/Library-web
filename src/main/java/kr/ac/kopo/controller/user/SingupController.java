@@ -127,9 +127,9 @@ public class SingupController implements Controller{
 			vo.setPhoneNum(pFront+pMiddle+pBack);
 			dao.userDataInsert(vo);
 			request.setAttribute("SingupSuccess", true);
-			return "./Index.jsp";
+			return "/Index.jsp";
 		} else {
-			return "./SingupPage.jsp";
+			return "/SingupPage.jsp";
 		}
 		
 		

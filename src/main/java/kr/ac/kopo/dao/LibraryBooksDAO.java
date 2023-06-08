@@ -22,9 +22,9 @@ public class LibraryBooksDAO {
 		String publisher = vo.getPublisher();
 		
 		// 선택한 조건들에 모두 해당하는것만 검색할 수 있도록 하는 로직
-		String orAnd1 = (bookName == "" || writer == "") ? "OR" : "AND";
-		String orAnd2 = (writer == "" || publisher == "") ? "OR" : "AND";
-		orAnd1 = bookName != "" && publisher != "" ? "AND" : "OR";
+//		String orAnd1 = (bookName == "" || writer == "") ? "OR" : "AND";
+//		String orAnd2 = (writer == "" || publisher == "") ? "OR" : "AND";
+//		orAnd1 = bookName != "" && publisher != "" ? "AND" : "OR";
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT * ");
@@ -298,12 +298,12 @@ public class LibraryBooksDAO {
 				String rd = rs.getString(4);
 				rd = rd.split(" ")[0];
 				rd = rd.replace("-", "");
-				vo.setRentalDate(Integer.parseInt(rd));
+				//vo.setRentalDate(Integer.parseInt(rd));
 				
 				String re = rs.getString(5);
 				re = re.split(" ")[0];
 				re = re.replace("-", "");
-				vo.setReturnDate(Integer.parseInt(re));
+				//vo.setReturnDate(Integer.parseInt(re));
 				
 				bookList.add(vo);
 			}

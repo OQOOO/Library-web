@@ -153,11 +153,17 @@ header {
 	height: 130px;
 }
 
-#midLine {
+.midLine {
 	width: 100%;
 	height:1px;
 	margin-bottom: 10px;
 	background-color: #a3a3a3;
+}
+
+.bookAddRemoveBtn {
+	margin:5px;
+	width: 300px;
+	height: 50px;
 }
 </style>
 </head>
@@ -170,13 +176,9 @@ header {
 				<input class="headerMenus" type="submit" value="관리자 페이지">
 			</form>
 			<form class="topMenuForm" method="post"
-				action="GetRentalBooks.do?rePage=RentBooksPage">
+				action="AdminUserManagementPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="유저 관리">
-			</form>
-			<form class="topMenuForm" method="post" action="MyPage.do">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="게시판 관리">
 			</form>
 			<form class="topMenuForm" method="post" action="Logout.do">
 				<input type="text" name="logout" value="logout"
@@ -188,12 +190,15 @@ header {
 
 	<div id="main">
 		<h1>도서 관리 페이지</h1>
+		<div class="midLine"></div>
+		<h2>도서 추가 및 삭제</h2>
 		<form method="post" action="AdminAddBookPage.do">
-			<input type="submit" value="도서 추가">
+			<input class="bookAddRemoveBtn" type="submit" value="도서 추가">
 		</form>
 		<form method="post" action="AdminRemoveBookPage.do">
-			<input type="submit" value="도서 삭제">
+			<input class="bookAddRemoveBtn" type="submit" value="도서 삭제">
 		</form>
+		<div class="midLine"></div>
 		<h2>도서 정보 검색</h2>
 		<form id="searchInputForm" method="post" action="AdminBookSearch.do?re=bookSearch">
 			<div id="searchDiv">
@@ -218,7 +223,7 @@ header {
 		</form>
 
 		<div id="space"></div>
-		<div id="midLine"></div>
+		<div class="midLine"></div>
 		<div id="userSelect">
 			<c:forEach items="${userSelect}" var="se" varStatus="status">
 		        ${se}<c:if test="${!status.last}">,</c:if>

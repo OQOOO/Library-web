@@ -50,6 +50,14 @@ header {
 		color:red;
 		margin:0px;
 	}
+	
+#main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -68,10 +76,6 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="유저 관리">
 			</form>
-			<form class="topMenuForm" method="post" action="MyPage.do">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="게시판 관리">
-			</form>
 			<form class="topMenuForm" method="post" action="Logout.do">
 				<input type="text" name="logout" value="logout"
 					style="display: none;"> <input class="headerMenus"
@@ -79,6 +83,7 @@ header {
 			</form>
 		</div>
 	</header>
+	<div id="main">
 	<h1>도서 추가 페이지</h1>
 	<form id="searchInputForm" method="post" action="AddBook.do">
 			<div id="addDiv">
@@ -110,5 +115,6 @@ header {
 
 			</div>
 		</form>
+		</div>
 </body>
 </html>

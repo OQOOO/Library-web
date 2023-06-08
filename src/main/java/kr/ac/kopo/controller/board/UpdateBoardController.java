@@ -15,6 +15,6 @@ public class UpdateBoardController implements Controller{
 		BoardVO vo = dao.postView(seq);
 		request.setAttribute("vo", vo);
 		
-		return "./userBoard/UpdateBoard.jsp";
+		return "/userBoard/UpdateBoard.jsp";
 	}
 }

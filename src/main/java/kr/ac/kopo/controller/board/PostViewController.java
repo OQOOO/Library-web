@@ -16,6 +16,6 @@ public class PostViewController implements Controller {
 		BoardVO vo = dao.postView(seq);
 		request.setAttribute("vo", vo);
 		
-		return "./userBoard/Post.jsp";
+		return "/userBoard/Post.jsp";
 	}
 }

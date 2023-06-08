@@ -67,10 +67,6 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="유저 관리">
 			</form>
-			<form class="topMenuForm" method="post" action="MyPage.do">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="게시판 관리">
-			</form>
 			<form class="topMenuForm" method="post" action="Logout.do">
 				<input type="text" name="logout" value="logout"
 					style="display: none;"> <input class="headerMenus"
@@ -78,6 +74,8 @@ header {
 			</form>
 		</div>
 	</header>
+	<h1>도서 삭제 페이지</h1>
+	<h3>제거하려는 도서의 ISBN을 입력하세요</h3>
 	<form method="post" action="AdminRemoveBook.do">
 		<input type="text" name="isbn">
 			<input type="submit" value="도서 삭제">
