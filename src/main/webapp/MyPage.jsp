@@ -65,8 +65,15 @@ header {
 	height: 70px;
 	margin: 10px;
 	font-size: 20px;
-	
+	background-color: white;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;	
 }
+
+	.mainMenu:active {
+	  transform: translate(1px, 1px);
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+	}
 
 #wd {
 	width: 200px;
@@ -94,6 +101,11 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="대여목록">
 			</form>
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
@@ -108,7 +120,7 @@ header {
 		<h1>마이페이지</h1>
 		<div id="midLine"></div>
 	    <form method="post" action="PwCheckPage.do">
-			<input class="mainMenu" type="submit" value="내 정보">
+			<input class="mainMenu" id="userInfoButton" type="submit" value="내 정보">
 		</form>
 	    <form method="post" action="Withdrawal.do">
 			<input class=mainMenu id="wd" type="submit" value="회원탈퇴">

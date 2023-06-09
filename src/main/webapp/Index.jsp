@@ -54,7 +54,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(109, 189, 189);
+    background: linear-gradient(to top right, #F4E4B7, #AADBD1);
     margin: 0px;
     height: 200px;
 }
@@ -80,14 +80,23 @@ header {
 }
 
 .mainMenu {
+	background-color: #f8f8f8;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;
+	border: 1px solid;
+
     width: 195px;
     height: 90px;
     margin: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.mainMenu:active {
+  	transform: translate(1px, 1px);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 
 .mainMenu:hover {
@@ -112,9 +121,12 @@ header {
   	  	<c:redirect url="${nextURL}" />
 	</c:if>
 	
-	    <header>
-	    
+    <header> 
         <div id="menuContainer" class="container">
+        	<form class="topMenuForm" method="post" action="IndexMain.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="메인페이지">
+			</form>
             <form id="loginForm" method="post" action="LoginPage.do">
                 <input id="loginbutton" class="headerMenus" type="submit" value="로그인">
             </form>

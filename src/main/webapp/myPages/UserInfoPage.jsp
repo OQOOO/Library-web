@@ -65,23 +65,42 @@ header {
 }
 
 #infoSb {
-	position:relative;
-	top: 7px;
-	height : 35px;
-	width: 150px;
+	position: relative;
+	top: 20px;
+	left: 250px;
+	
+	width : 120px;
+	height :30px;
+	background-color: white;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;
 }
-
-.infoDiv {
-background-color: rgb(240, 242, 244);
-width : 500px;
-height: 50px;
-margin: 5px;
+#infoSb:active {
+  	transform: translate(1px, 1px);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 
 #otherButtonDiv input {
 	margin : 5px;
 	position:relative;
 }
+
+	#infoContainer {
+		display: grid;
+	    text-align: center;
+		grid-template-columns: 150px 300px;
+		grid-template-rows: 50px 50px 50px 50px 50px 50px;
+		font-weight: bold;
+	}
+	.who {
+		text-align: right;
+		padding:15px;
+	}
+	.infoDiv {
+		border-left: solid gray 1px;
+		text-align: left;
+		padding: 15px;
+	}
 </style>
 </head>
 <body>
@@ -101,6 +120,11 @@ margin: 5px;
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="대여목록">
 			</form>
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
@@ -112,15 +136,16 @@ margin: 5px;
         </div>
     </header>
     <div id="main">
-    
 		<h1>유저 정보 페이지</h1>
 		<c:set var="vo" value="${requestScope.userInfo}"/>
-		<div class="infoDiv">아이디 : ${vo.id}</div>
-		<div class="infoDiv">비밀번호 : ${vo.password }</div>
-		<div class="infoDiv">이름 : ${vo.name }</div>
-		<div class="infoDiv">생년월일 : ${vo.birthDate }</div>
-		<div class="infoDiv">이메일 : ${vo.email }</div>
-		<div class="infoDiv">전화번호 : ${vo.phoneNum }</div>
+    <div id="infoContainer">
+
+		<div class="who">아이디 </div><div class="infoDiv"> ${vo.id}</div>
+		<div class="who">비밀번호 </div><div class="infoDiv"> ${vo.password }</div>
+		<div class="who">이름 </div><div class="infoDiv"> ${vo.name }</div>
+		<div class="who">생년월일 </div><div class="infoDiv"> ${vo.birthDate }</div>
+		<div class="who">이메일 </div><div class="infoDiv"> ${vo.email }</div>
+		<div class="who">전화번호 </div><div class="infoDiv"> ${vo.phoneNum }</div>
 		
 		<c:set var="re" value="infoPage"/>
 		<form class="topMenuForm" method="post" action="UserInfo.do?re=infoPage">
@@ -130,5 +155,6 @@ margin: 5px;
 			<input id="infoSb" type="submit" value="내정보 수정">
 		</form>
 		</div>
+	</div>
 </body>
 </html>

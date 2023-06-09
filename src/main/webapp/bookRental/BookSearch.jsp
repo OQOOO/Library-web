@@ -141,11 +141,19 @@ header {
 }
 
 #submitButton {
+	font-size: 17px;
+	background-color: white;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;	
 	position: absolute;
 	right: 0px;
 	top: 5px;
 	height: 118px;
 	width: 100px;
+}
+#submitButton:active {
+  transform: translate(1px, 1px);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 
 #space {
@@ -169,18 +177,27 @@ header {
 				<input class="headerMenus" type="submit" value="메인페이지">
 			</form>
 			<form class="topMenuForm" method="post"
+				action="SearchBookPage.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="도서검색">
+			</form>
+			<form class="topMenuForm" method="post"
 				action="GetRentalBooks.do?rePage=RentBooksPage">
 				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="도서반납">
+				<input class="headerMenus" type="submit" value="대여목록">
 			</form>
-			<form class="topMenuForm" method="post" action="MyPage.do">
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
+	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
 			</form>
-			<form class="topMenuForm" method="post" action="Logout.do">
-				<input type="text" name="logout" value="logout"
-					style="display: none;"> <input class="headerMenus"
-					type="submit" value="로그아웃">
+	        <form class="topMenuForm" method="post" action="Logout.do">
+				<input type="text" name="logout" value="logout" style="display: none;">
+				<input class="headerMenus" type="submit" value="로그아웃">
 			</form>
 		</div>
 	</header>

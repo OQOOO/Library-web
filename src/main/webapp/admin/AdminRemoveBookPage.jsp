@@ -49,6 +49,13 @@ header {
 		color:red;
 		margin:0px;
 	}
+	#main {
+	    width: 100%;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    flex-direction: column;
+	}
 </style>
 </head>
 <body>
@@ -63,7 +70,7 @@ header {
 				<input class="headerMenus" type="submit" value="도서 관리">
 			</form>
 			<form class="topMenuForm" method="post"
-				action="GetRentalBooks.do?rePage=RentBooksPage">
+				action="AdminUserManagementPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="유저 관리">
 			</form>
@@ -74,11 +81,13 @@ header {
 			</form>
 		</div>
 	</header>
+	<div id="main">
 	<h1>도서 삭제 페이지</h1>
 	<h3>제거하려는 도서의 ISBN을 입력하세요</h3>
 	<form method="post" action="AdminRemoveBook.do">
 		<input type="text" name="isbn">
 			<input type="submit" value="도서 삭제">
 		</form>
+		</div>
 </body>
 </html>

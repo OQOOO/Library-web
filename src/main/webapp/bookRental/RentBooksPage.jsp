@@ -104,6 +104,16 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="도서검색">
 			</form>
+			<form class="topMenuForm" method="post"
+				action="GetRentalBooks.do?rePage=RentBooksPage">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="대여목록">
+			</form>
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">

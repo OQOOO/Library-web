@@ -108,7 +108,7 @@ header {
     </header>
     <div id="v">
         <div class="container">
-            <h1 id="mainTitle">관리자 페이지</h1>
+            <h1 id="mainTitle">관리자 화면</h1>
         </div>
     </div>
     <hr>
@@ -136,7 +136,7 @@ header {
             </div>
             <div>
                 <form method="post" action="">
-                    <input class="mainMenu" type="submit" value="공지사항">
+                    <input class="mainMenu" type="submit" value="기타">
                 </form>
             </div>
         </div>

@@ -7,23 +7,80 @@
 <meta charset="EUC-KR">
 <title>LoginPage</title>
 <style>
+body {
+    margin: 0px;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(51, 46, 41);
+    margin: 0px;
+    height: 40px;
+}
+
+.container {
+    min-width: 1000px;
+
+}
+
+#menuContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.headerMenus {
+    font-size: 20px;
+    height: 100%;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border: none;
+
+}
+
+.headerMenus:hover {
+    background-color: rgba(219, 219, 219, 0.144);
+
+}
 	#container {
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
+	  position: relative;
+	  border: 2px solid;
+	  top: 100px;
 	  width: 500px;
-	  height: 700px;
-	  background-color: rgb(114, 214, 206);
+	  height: 500px;
 	   display: flex;
   		justify-content: center;
   		align-items: center;
 	}
 	fome {
-	position:relative;
+		position:relative;
+	}
+	#main {
+	    width: 100%;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    flex-direction: column;
+	}
+	.inputBotton {
+		background-color: white;
+		box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+		transition: transform 0.1s ease;	
+	}
+	.inputBotton:active {
+	  transform: translate(2px, 2px);
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 	}
 	.inputBox {
+		position:relative;
 		height: 100px;
+		bottom: 20px;
 	}
 	
 	.idpw {
@@ -49,14 +106,39 @@
 		position: absolute;
 		width: 150px;
 		height : 30px;
+		bottom: 140px;
 		right: 96px;
-		border: 2px solid rgb(34, 148, 138);
-		border-radius: 5px;
+	}
+	#singUpButton {
+		position: absolute;
+		width: 100px;
+		height : 30px;
+		bottom: 140px;
+		right: 250px;
+	}
+	#backButton {
+		position: absolute;
+		width: 100px;
+		height : 30px;
+		bottom: 30px;
+		right: 96px;
 	}
 </style>
 
 </head>
 <body>
+    <header> 
+        <div id="menuContainer" class="container">
+        	<form class="topMenuForm" method="post" action="IndexMain.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="메인페이지">
+			</form>
+            <form id="loginForm" method="post" action="LoginPage.do">
+                <input id="loginbutton" class="headerMenus" type="submit" value="로그인">
+            </form>
+        </div>
+    </header>
+	<div id="main">
 	<div id="container">
 	<c:if test="${not empty sessionScope.id}">
     	<c:set var="nextURL" value="MainPage.jsp?id=${sessionScope.id}" />
@@ -84,17 +166,17 @@
 				${ "<p id='errer'>해당 계정이 존재하지 않습니다.</p>" }
 			</c:if><br>
 		</div>
-		<input id="logInButton" type="submit" value="로그인">
+		<input class="inputBotton" id="logInButton" type="submit" value="로그인">
 		<!-- 뒤로 -->
 	</form>
 		<form method="post" action ="IndexMain.do">
-		<input type="submit" value="뒤로">
+		<input class="inputBotton" id="backButton" type="submit" value="뒤로">
 	</form>
+
+	<form method="post" action ="SingupPage.do">
+		<input class="inputBotton" id="singUpButton" type="submit" value="회원가입">
 	</form>
-		<form method="post" action ="SingupPage.do">
-		<input type="submit" value="회원가입">
-	</form>
-	
+	</div>
 	</div>
 </body>
 </html>

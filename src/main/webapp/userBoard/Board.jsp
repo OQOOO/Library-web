@@ -59,6 +59,63 @@ header {
 	margin-top:10px;
 	background-color: #a3a3a3;
 }
+
+.post {
+	display: grid;
+    grid-template-columns: 50px 700px 250px;
+    grid-template-rows: 70px;
+    
+}
+	.post div {
+		
+		
+	}
+	
+	.timeContainer {
+		text-align: right;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1.5fr 1fr 1fr;
+	}
+		.time {
+			font-size: 10px;
+		}
+	.postNum {
+		display: flex;
+		align-items: center; /* 내부 요소를 수직으로 가운데 정렬 */
+	
+	}
+	.title {
+		display: flex;
+		align-items: center; /* 내부 요소를 수직으로 가운데 정렬 */
+	}
+a:link {
+  color: blue; /* 미방문 링크의 색상 */
+  text-decoration: none;
+}
+
+a:visited {
+  color: purple; /* 방문한 링크의 색상 */
+}
+	
+.buttonsDivMid {
+	display: flex;
+}
+
+.insertButton {
+	width: 100px;
+	height: 45px;
+	margin: 5px;
+	font-size: 17px;
+	background-color: white;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;	
+}
+.insertButton:active {
+  transform: translate(1px, 1px);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+}
+
 </style>
 </head>
 
@@ -79,6 +136,11 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="대여목록">
 			</form>
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
@@ -91,14 +153,37 @@ header {
     </header>
     <div id="main">
 	    <h1>게시판</h1>
-		<form action="InsertBoard.do" method="post">
-			<input type="submit" value="새 글 작성">
-		</form>
-		
-		<c:forEach  var="post" items="${postList}">
-			<a href="PostView.do?seq=${post.seq}">${post.seq}, ${post.title}, ${post.userId}, ${post.createAt}, ${post.updateAt}, ${post.views}</a>
-			
+	    <div class="buttonsDivMid">
+			<form action="IndexMain.do" method="post">
+				<input class="insertButton" type="submit" value="뒤로">
+			</form>
+			<form action="InsertBoard.do" method="post">
+				<input class="insertButton" type="submit" value="새 글 작성">
+			</form>
+		</div>
 		<div class="midLine"></div>
+		<c:forEach  var="post" items="${postList}">
+			<div class="post">
+				<div class="postNum">
+					${post.seq}
+				</div>
+					
+				<div class="title">
+					<a href="PostView.do?seq=${post.seq}"> ${post.title}</a>
+				</div>
+				<div class="timeContainer">
+					<div>
+						작성자: ${post.userId},  조회: ${post.views}
+					</div>
+					<div class="time">
+						작성시간: ${post.createAt}
+					</div>
+					<div class="time">
+						최근수정: ${post.updateAt}
+					</div>
+				</div>
+			</div>
+			<div class="midLine"></div>
 		</c:forEach>
 	</div>
 </body>

@@ -52,6 +52,7 @@ public class HandlerMapping {
 		mappings.put("/Singup.do", new SingupController());
 		mappings.put("/UserDateUpdate.do", new UserDataUpdateController());
 		mappings.put("/Withdrawal.do", new WithdrawalController());
+		mappings.put("/UserDataRemove.do", new UserDataRemoveController());
 		
 		// 책 대출, 반납,
 		mappings.put("/BookSearch.do", new BookSearchController());
@@ -59,7 +60,6 @@ public class HandlerMapping {
 		mappings.put("/BookReturn.do", new BookReturnController());
 		
 		mappings.put("/GetRentalBooks.do", new GetRentalBookListController());
-		mappings.put("/UserDataRemove.do", new UserDataRemoveController());
 		
 		// 보드
 		mappings.put("/BoardView.do", new BoardViewController());

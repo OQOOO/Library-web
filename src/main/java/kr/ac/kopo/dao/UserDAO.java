@@ -66,9 +66,9 @@ public class UserDAO {
 	}
 	
 	public UserVO userLogIn(UserVO vo) {
-		System.out.println("userLoginDAOstart");
-		System.out.println(vo.getId());
-		System.out.println(vo.getPassword());
+//		System.out.println("userLoginDAOstart");
+//		System.out.println(vo.getId());
+//		System.out.println(vo.getPassword());
 		
 		
 		StringBuilder sql = new StringBuilder();

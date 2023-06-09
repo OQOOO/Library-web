@@ -59,6 +59,59 @@ header {
 	margin-top:10px;
 	background-color: #a3a3a3;
 }
+
+
+.post {
+	display: grid;
+    grid-template-columns: 50px 700px 250px;
+    grid-template-rows: 70px;
+    
+}
+	.post div {
+		
+		
+	}
+	
+	.timeContainer {
+		text-align: right;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1.5fr 1fr 1fr;
+	}
+		.time {
+			font-size: 10px;
+		}
+		.postNum {
+		display: flex;
+		align-items: center; /* 내부 요소를 수직으로 가운데 정렬 */
+	
+	}
+	.title {
+		display: flex;
+		align-items: center; /* 내부 요소를 수직으로 가운데 정렬 */
+	}
+.content {
+	width: 1000px;
+}
+
+.footer {
+	display: flex;
+}
+
+.footer input {
+	width: 100px;
+	height: 45px;
+	margin: 5px;
+	font-size: 17px;
+	background-color: white;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;	
+}
+.footer input:active {
+  transform: translate(1px, 1px);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+}
+
 </style>
 </head>
 
@@ -79,6 +132,11 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="대여목록">
 			</form>
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
@@ -89,21 +147,56 @@ header {
 			</form>
         </div>
     </header>
-	${requestScope.vo.title} | ${requestScope.vo.seq} | ${requestScope.vo.userId}<br>
-	${requestScope.vo.content}<br>
-	${requestScope.vo.createAt}<br>
-	${requestScope.vo.updateAt}<br>
-	${requestScope.vo.views}<br>
+    <div id="main">
+		<div class="midLine"></div>
+    	<div class="post">
+			<div class="postNum">
+				${requestScope.vo.seq}
+			</div>
+					
+			<div class="title">
+				<a href="PostView.do?seq=${requestScope.vo.seq}"> ${requestScope.vo.title}</a>
+			</div>
+			<div class="timeContainer">
+				<div>
+					작성자: ${requestScope.vo.userId},  조회: ${requestScope.vo.views}
+				</div>
+				<div class="time">
+					작성시간: ${requestScope.vo.createAt}
+				</div>
+				<div class="time">
+					최근수정: ${requestScope.vo.updateAt}
+				</div>
+			</div>
+		</div>
+		<div class="midLine"></div>
+		<div class="content">
+			${vo.content}
+		</div>
+		<div class="midLine"></div>
+		
+		<div class="footer">
+			<div>
+				<form action="BoardView.do" method="post">
+					<input type="submit" value="게시판으로">
+				</form>
+			</div>
+			<c:if test="${sessionScope.id eq requestScope.vo.userId}">
+				<div>
+					<form action="UpdateBoard.do" method="post">
+						<input type="hidden" name="seq" value="${requestScope.vo.seq}">
+						<input type="submit" value="수정">
+					</form>
+				</div>
+				<div>
+					<form action="DeleteBoard.do" method="post">
+						<input type="hidden" name="postSeq" value="${requestScope.vo.seq}">
+						<input type="submit" value="삭제">
+					</form>
+				</div>
+			</c:if>
+		</div>
+	</div>
 	
-	<c:if test = "${sessionScope.id eq requestScope.vo.userId}">
-		<form action="DeleteBoard.do" method="post">
-			<input type="hidden" name = "postSeq" value="${requestScope.vo.seq}">
-			<input type="submit" value="삭제">
-		</form>
-		<form action="UpdateBoard.do" method="post">
-			<input type="hidden" name = "seq" value="${requestScope.vo.seq}">
-			<input type="submit" value="수정">
-		</form>
-	</c:if>
 </body>
 </html>

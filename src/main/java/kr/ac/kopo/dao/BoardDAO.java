@@ -76,7 +76,7 @@ public class BoardDAO {
 	public List<BoardVO> boardView() {
 		List<BoardVO> postList = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
-		sql.append("select * from user_board ");
+		sql.append("select * from user_board ORDER BY seq DESC");
 		
 		try (
 				Connection conn = new ConnectionFactory().getConnection();

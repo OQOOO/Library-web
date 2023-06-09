@@ -52,12 +52,57 @@ header {
 	align-items: center;
 	justify-content: center;
 }
+
 .midLine {
 	width: 1000px;
 	height:1px;
 	margin-bottom: 15px;
 	margin-top:10px;
 	background-color: #a3a3a3;
+}
+#titleIdDiv {
+	display: flex;
+}
+
+#titleIdDiv p {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin: 0;
+}
+
+#title {
+	width: 750px;
+	height: 35px;
+	margin-right: 10px;
+}
+textarea {
+	width: 750px;
+	height: 300px
+}
+
+.insertButton {
+	width: 100px;
+	height: 45px;
+	margin: 5px;
+	font-size: 17px;
+	background-color: white;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;	
+}
+.insertButton:active {
+  transform: translate(1px, 1px);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+}
+#insertButton {
+	position: relative;
+	left: 650px;
+	bottom: 5px;
+
+}
+#backButton {
+	position: relative;
+	right: -90px;
+	bottom: 60px;
 }
 </style>
 </head>
@@ -79,6 +124,11 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="대여목록">
 			</form>
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
@@ -89,19 +139,27 @@ header {
 			</form>
         </div>
     </header>
+	<div id="main">
  	<h1>글작성</h1>
-	<hr/>
-	<form action="InsertBoard2.do" method="post">
-
-		제목<input type="text" name="title"/><br>
-
-		작성자 ${sessionScope.id}<br>
-
-		내용<textarea name="content" cols="40" rows="10"></textarea><br>
-
-
-		<input type="submit" value="add"/><br>
-	</form>
+	<div class="midLine"></div>
+		<form action="InsertBoard2.do" method="post">
 	
+			<div id="titleIdDiv">
+				<input id="title" type="text" name="title" placeholder="제목을 입력하세요"/><br>
+		
+				<p>작성자 ${sessionScope.id}</p>
+			</div>
+			<div class="midLine"></div>
+	
+			<textarea name="content" cols="40" rows="10" placeholder="내용을 입력하세요"></textarea><br>
+	
+	
+			<div class="midLine"></div>
+			<input class="insertButton" id="insertButton" type="submit" value="작성완료"/><br>
+		</form>
+		<form action="BoardView.do" method="post">
+			<input class="insertButton" id="backButton" type="submit" value="취소"/><br>
+		</form>
+	</div>
 </body>
 </html>

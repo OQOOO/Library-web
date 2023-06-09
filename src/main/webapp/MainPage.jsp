@@ -14,6 +14,7 @@ body {
 
 }
 
+
 header {
     display: flex;
     align-items: center;
@@ -55,9 +56,10 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(109, 189, 189);
+    background: linear-gradient(to top right, #F4E4B7, #AADBD1);
     margin: 0px;
     height: 200px;
+    overflow: hidden;
 }
 
 #mainTitle {
@@ -81,14 +83,23 @@ header {
 }
 
 .mainMenu {
+	background-color: #f8f8f8;
+	box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	transition: transform 0.1s ease;
+	border: 1px solid;
+
     width: 195px;
     height: 90px;
     margin: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.mainMenu:active {
+  	transform: translate(1px, 1px);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 
 .mainMenu:hover {
@@ -99,6 +110,25 @@ header {
 <body>
     <header>
         <div id="menuContainer" class="container">
+	        <form class="topMenuForm" method="post" action="IndexMain.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="메인페이지">
+			</form>
+			<form class="topMenuForm" method="post"
+				action="SearchBookPage.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="도서검색">
+			</form>
+			<form class="topMenuForm" method="post"
+				action="GetRentalBooks.do?rePage=RentBooksPage">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="대여목록">
+			</form>
+			<form class="topMenuForm" method="post"
+				action="BoardView.do">
+				<input type="text" name="logout" value="1" style="display: none;">
+				<input class="headerMenus" type="submit" value="게시판">
+			</form>
 	        <form class="topMenuForm" method="post" action="MyPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="마이페이지">
@@ -113,6 +143,7 @@ header {
         <div class="container">
             <h1 id="mainTitle">${sessionScope.id}님 환영합니다.</h1>
         </div>
+        
     </div>
     <hr>
     <div id="main">

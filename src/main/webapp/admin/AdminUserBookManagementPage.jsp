@@ -104,7 +104,7 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="도서관리">
 			</form>
-	        <form class="topMenuForm" method="post" action="AdminAddBookPage.do">
+	        <form class="topMenuForm" method="post" action="AdminUserManagementPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="유저관리">
 			</form>
@@ -115,7 +115,7 @@ header {
         </div>
     </header>
     <div id="main">
-		<h1>${userId}가 대여한 책 목록</h1>
+		<h1>${userId} : 대여한 책 목록</h1>
 		<c:forEach items="${bookList}" var="vo">
 	        <div class="bookInfoDiv">
 	        	<p class="bookInfoText" style="font-size:1.2em">${vo.bookName}</p>

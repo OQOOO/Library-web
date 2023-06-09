@@ -72,7 +72,7 @@ header {
 				<input class="headerMenus" type="submit" value="档辑 包府">
 			</form>
 			<form class="topMenuForm" method="post"
-				action="GetRentalBooks.do?rePage=RentBooksPage">
+				action="AdminUserManagementPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="蜡历 包府">
 			</form>
