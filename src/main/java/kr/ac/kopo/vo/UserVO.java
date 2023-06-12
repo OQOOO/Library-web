@@ -5,7 +5,7 @@ public class UserVO {
 	private String id;
 	private String password;
 	private String name;
-	private String birthDate; //원래 int타입이였으나 수정함. 심각한 오류가 발생할 수 있음
+	private String birthDate;
 	private String email;
 	private String phoneNum;
 	private int adminRight;
@@ -86,8 +86,4 @@ public class UserVO {
 				+ ", email=" + email + ", phoneNum=" + phoneNum + ", adminRight=" + adminRight + "]";
 	}
 
-	
-	
-	
-	
 }

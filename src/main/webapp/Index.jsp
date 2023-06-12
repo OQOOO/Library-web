@@ -134,14 +134,14 @@ header {
     </header>
     <div id="v">
         <div class="container">
-            <h1 id="mainTitle">도서 관리 시스템</h1>
+            <h1 id="mainTitle">도서관에 오신걸 환영합니다</h1>
         </div>
     </div>
     <hr>
     <div id="main">
         <div class="container" id="mainMenuCon">
             <div>
-                <form method="post" action="LoginPage.do">
+                <form method="post" action="SearchBookPage.do">
                     <input class="mainMenu" type="submit" value="도서검색">
                 </form>
             </div>
@@ -152,7 +152,7 @@ header {
             </div>
             <div>
                 <form method="post" action="LoginPage.do">
-                    <input class="mainMenu" type="submit" value="도서반납">
+                    <input class="mainMenu" type="submit" value="대여목록">
                 </form>
             </div>
             <div>

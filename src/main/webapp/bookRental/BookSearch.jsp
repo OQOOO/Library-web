@@ -176,6 +176,7 @@ header {
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="메인페이지">
 			</form>
+			<c:if test="${not empty sessionScope.id}">
 			<form class="topMenuForm" method="post"
 				action="SearchBookPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
@@ -199,12 +200,18 @@ header {
 				<input type="text" name="logout" value="logout" style="display: none;">
 				<input class="headerMenus" type="submit" value="로그아웃">
 			</form>
+			</c:if>
+			<c:if test="${empty sessionScope.id}">
+				<form id="loginForm" method="post" action="LoginPage.do">
+	                <input id="loginbutton" class="headerMenus" type="submit" value="로그인">
+	            </form>
+			</c:if>
 		</div>
 	</header>
 
 	<div id="main">
 		<h2>원하는 조건으로 검색해보세요</h2>
-		<h5>입력받은 조건을 모두 만족한 검색결과만이 표시됩니다.</h5>
+		<h5>입력받은 조건을 모두 만족한 검색결과만이 표시됩니다. (입력 없을경우 모두 검색)</h5>
 		<form id="searchInputForm" method="post" action="BookSearch.do?re=bookSearch">
 			<div id="searchDiv">
 				<div id="inputBox">
@@ -242,6 +249,7 @@ header {
 			<div class="bookInfoDiv">
 				<p class="bookInfoText" style="font-size:1.2em">${vo.bookName}</p>
 				<p class="bookInfoText" style="font-size:0.8em">${vo.writer}</p>
+				<p class="bookInfoText" style="font-size:0.8em">${vo.publisher}</p>
 				<c:if test="${not empty vo.rentUserId }">
 					<c:if test="${not empty admin }">
 						<p class="bookInfoText isRentText" style="font-size:0.8em">대여자 : ${vo.rentUserId }</p>
@@ -252,15 +260,17 @@ header {
 				</c:if>
 				<c:if test="${empty vo.rentUserId }">
 					<c:if test="${empty admin }">
-					<form method="post" action="BookRent.do">
-						<input type="hidden" name="isbn" value="${vo.isbn }">
-						 
-						<input type="hidden" name="bookName" value="${userSelect[0]}"> 
-						<input type="hidden" name="writer" value="${userSelect[1]}"> 
-						<input type="hidden" name="publisher" value="${userSelect[2]}"> 
-						
-						<input class="lentButton" type="submit" value="대여하기">
-					</form>
+						<form method="post" action="BookRent.do">
+							<input type="hidden" name="isbn" value="${vo.isbn }">
+							 
+							<input type="hidden" name="bookName" value="${userSelect[0]}"> 
+							<input type="hidden" name="writer" value="${userSelect[1]}"> 
+							<input type="hidden" name="publisher" value="${userSelect[2]}"> 
+							
+							<c:if test="${not empty sessionScope.id}">
+							<input class="lentButton" type="submit" value="대여하기">
+							</c:if>
+						</form>
 					</c:if>
 				</c:if>
 				

@@ -236,7 +236,7 @@ header {
 		<c:forEach items="${booksInfo}" var="vo">
 			<div class="bookInfoDiv">
 				<p class="bookInfoText" style="font-size:1.2em">${vo.bookName} _ ISBN: ${vo.isbn }</p>
-				<p class="bookInfoText" style="font-size:0.8em">${vo.writer}</p>
+				<p class="bookInfoText" style="font-size:0.8em">${vo.writer}, ${vo.publisher }</p>
 				<c:if test="${not empty vo.rentUserId }">
 	
 					<p class="bookInfoText isRentText" style="font-size:0.8em">´ë¿©ÀÚ: ${vo.rentUserId }</p>

@@ -121,6 +121,7 @@ header {
 		width: 100px;
 		height : 30px;
 		bottom: 30px;
+		
 		right: 96px;
 	}
 </style>

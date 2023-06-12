@@ -260,26 +260,30 @@ header {
 				<p class="userInfoText" style="font-size:0.8em">이메일: ${vo.email}</p>
 				<p class="userInfoText" style="font-size:0.8em">전화번호: ${vo.phoneNum}</p>
 				
+				<c:if test="${vo.id != 'root'}">
 				<input class="userRemoveButton" type="button" onclick="userRemoveCheck('${vo.id}')" value="유저 삭제">
-				<form id="del${vo.id}" action="AdminUserRemove.do" method="post">
-					<input type="hidden" name="adminSelect" value=${adminSelect }>
-					<input type="hidden" name="adminInput" value=${adminInput }>
-					<input type="hidden" name="userId" value=${vo.id }>
-				</form>
+					<form id="del${vo.id}" action="AdminUserRemove.do" method="post">
+						<input type="hidden" name="adminSelect" value=${adminSelect }>
+						<input type="hidden" name="adminInput" value=${adminInput }>
+						<input type="hidden" name="userId" value=${vo.id }>
+					</form>
+				</c:if>
 				
-				<input class="setAdminRightButton" type="button" onclick="userSetAdminCheck('${vo.id}')" value="관리자권한 부여">
-				<form id="setAdmin${vo.id}" action="AdminSetUserAdmin.do" method="post">
-					<input type="hidden" name="adminSelect" value=${adminSelect }>
-					<input type="hidden" name="adminInput" value=${adminInput }>
-					<input type="hidden" name="userId" value=${vo.id }>
-				</form>
-				
-				<form action="AdminUserBookManagementPage.do" method="post">
-					<input type="hidden" name="adminSelect" value=${adminSelect }>
-					<input type="hidden" name="adminInput" value=${adminInput }>
-					<input type="hidden" name="userId" value=${vo.id }>
-					<input class="bookManageButton" type="submit" value="대여도서 확인">
-				</form>
+				<c:if test="${vo.adminRight != 1}">
+					<input class="setAdminRightButton" type="button" onclick="userSetAdminCheck('${vo.id}')" value="관리자권한 부여">
+					<form id="setAdmin${vo.id}" action="AdminSetUserAdmin.do" method="post">
+						<input type="hidden" name="adminSelect" value=${adminSelect }>
+						<input type="hidden" name="adminInput" value=${adminInput }>
+						<input type="hidden" name="userId" value=${vo.id }>
+					</form>
+					
+					<form action="AdminUserBookManagementPage.do" method="post">
+						<input type="hidden" name="adminSelect" value=${adminSelect }>
+						<input type="hidden" name="adminInput" value=${adminInput }>
+						<input type="hidden" name="userId" value=${vo.id }>
+						<input class="bookManageButton" type="submit" value="대여도서 확인">
+					</form>
+				</c:if>
 				
 				
 				
