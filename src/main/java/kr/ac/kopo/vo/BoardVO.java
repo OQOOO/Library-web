@@ -8,8 +8,14 @@ public class BoardVO {
 	private String createAt;
 	private String updateAt;
 	private String views;
+	private int commentId;
 	
-	
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+	public int getCommentId() {
+		return commentId;
+	}
 	public int getSeq() {
 		return seq;
 	}

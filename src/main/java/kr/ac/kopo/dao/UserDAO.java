@@ -11,7 +11,6 @@ import kr.ac.kopo.vo.UserVO;
 
 public class UserDAO {
 	
-	// 지금의 오류는 birthDate 타입을 int에서 Date 타입으로 바꿔서 발생하는 오류임
 	public boolean idChack(String id) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ID, PASSWORD ");
@@ -26,7 +25,6 @@ public class UserDAO {
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			
-			// �씪�씤�씠 �꽭�뼱吏�硫� 以묐났
 			while (rs.next()) {
 				++ chackCnt;
 			}
@@ -66,10 +64,6 @@ public class UserDAO {
 	}
 	
 	public UserVO userLogIn(UserVO vo) {
-//		System.out.println("userLoginDAOstart");
-//		System.out.println(vo.getId());
-//		System.out.println(vo.getPassword());
-		
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ID, PASSWORD, ADMIN_RIGHT ");

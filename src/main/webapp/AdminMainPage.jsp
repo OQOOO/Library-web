@@ -125,7 +125,7 @@ header {
                 </form>
             </div>
             <div>
-                <form method="post" action="">
+                <form method="post" action="${pageContext.request.contextPath }/GoAdminBoard.sp">
                     <input class="mainMenu" type="submit" value="게시판 관리">
                 </form>
             </div>

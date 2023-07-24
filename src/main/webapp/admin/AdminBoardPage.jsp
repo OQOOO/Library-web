@@ -122,32 +122,9 @@ a:visited {
 <body>
 	<header>
         <div id="menuContainer" class="container">
-        	<form class="topMenuForm" method="post" action="IndexMain.do">
+        	<form class="topMenuForm" method="post" action="AdminMainPage.do">
 				<input type="text" name="logout" value="1" style="display: none;">
 				<input class="headerMenus" type="submit" value="메인페이지">
-			</form>
-			<form class="topMenuForm" method="post"
-				action="SearchBookPage.do">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="도서검색">
-			</form>
-			<form class="topMenuForm" method="post"
-				action="GetRentalBooks.do?rePage=RentBooksPage">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="대여목록">
-			</form>
-			<form class="topMenuForm" method="post"
-				action="BoardView.do">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="게시판">
-			</form>
-	        <form class="topMenuForm" method="post" action="MyPage.do">
-				<input type="text" name="logout" value="1" style="display: none;">
-				<input class="headerMenus" type="submit" value="마이페이지">
-			</form>
-	        <form class="topMenuForm" method="post" action="Logout.do">
-				<input type="text" name="logout" value="logout" style="display: none;">
-				<input class="headerMenus" type="submit" value="로그아웃">
 			</form>
         </div>
     </header>
@@ -169,7 +146,7 @@ a:visited {
 				</div>
 					
 				<div class="title">
-					<a href="${pageContext.request.contextPath}/ViewPost.sp?seq=${post.seq}"> ${post.title}</a>
+					<a href="${pageContext.request.contextPath }/GoAdminPost.sp?seq=${post.seq}"> ${post.title}</a>
 				</div>
 				<div class="timeContainer">
 					<div>
