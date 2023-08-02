@@ -115,7 +115,7 @@ header {
 </script>
 </head>
 <body>
-
+	<!--  -->
 	<c:if test="${not empty sessionScope.id}">
     	<c:set var="nextURL" value="IndexMain.do" />
   	  	<c:redirect url="${nextURL}" />
